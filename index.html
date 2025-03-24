@@ -2,11 +2,13 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <script defer src='index.js'></script>
     </head>
     <body>
-        <h1>Welcome to My Website!</h1>
-        <!-- Consider adding personal photo -->
-        <p>I'm Matthew Brunkhorst.  I graduated from Northeastern University with a Master's in Computer Science in late 2024, and I made this website to show off some personal projects.</p>
+        <h1>Mage Wars Card Gallery (WIP)</h1>
+        <p id="temptest">Use the search bar to search for cards.</p>
+        <input type="text" id="searchBar" onkeyup="search()" placeholder="Search for cards..">
+        <button id='search-button'>search</button>
         <h3>Contact Info</h3>
         <p class="pLinks">
             Email: <a href="mailto:mbrunkhorst218@gmail.com">mbrunkhorst218@gmail.com</a> 

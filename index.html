@@ -5,16 +5,73 @@
         <script defer src='index.js'></script>
     </head>
     <body>
+        <img src="Images/FullAction.png" alt="Full Action">
         <h1>Mage Wars Card Gallery (WIP)</h1>
         <p id="temptest">Use the search bar to search for cards.</p>
         <input type="text" id="searchBar" onkeyup="search()" placeholder="Search for cards..">
         <button id='search-button'>search</button>
         <h3>Contact Info</h3>
-        <p class="pLinks">
-            Email: <a href="mailto:mbrunkhorst218@gmail.com">mbrunkhorst218@gmail.com</a> 
-            &emsp; &emsp;
-            Phone: (669)600-1887
-        </p>
+        <div id="cards" class="cardGrid">
+            <div class = "cardCreature">
+                <div class = "topBar">
+                    <div class = "name">
+                        Ravenous Ghoul
+                    </div>
+                    <div class = "typeSubclass">
+                        <div class = "type">
+                            Creature
+                        </div>
+                        <div class = "subclass">
+                            Undead
+                        </div>
+                    </div>
+                </div>
+                <div class = "secondBar">
+                    <div class = "cost">
+                        13
+                    </div>
+                    <div class = "action">
+                        Full
+                    </div>
+                    <div class = "range">
+                        0-0
+                    </div>
+                    <div class = "target">
+                        Zone
+                    </div>
+                    <div class = "level">
+                        3 Dark
+                    </div>
+                </div>
+                <div class = "middle">
+                    <div class = "armor">
+                        2
+                    </div>
+                    <div class = "health">
+                        9
+                    </div>
+                </div>
+                <div class = "bottom">
+                    <div class = "attack">
+                        <div class = "attackAction">
+                            Quick
+                        </div>
+                        <div class = "attackType">
+                            Melee
+                        </div>
+                        <div class = "attackDice">
+                            4
+                        </div>
+                        <div class = "attackText">
+                            Piercing 1
+                        </div>
+                    </div>
+                    <div class = "text">
+                        Fast * Psychic Immunity * Nonliving.  If a Corporeal creature was destroyed this round, and Ravenous Ghoul is in (or moves to) the zone it was destroyed in, as a quick action it may take that creature from its discard pile and remove it from the game to gain a growth marker.
+                    </div>
+                </div>
+            </div>
+        </div>
         <h3>Personal Links</h3>
         <p class="pLinks">
             <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Resume (Temporarily a YouTube Link)</a>

@@ -1,101 +1,316 @@
+.search{
+    width: 20vw;
+    height: 130vh;
+    /* border-style: solid; */
+    float: left;
+    border-style:solid;
+    border-width:0.1vw;
+}
 
 .cardGrid{
-    width: 1200px;
-    height: 1200px;
-    border-style: solid;
+    width: 75vw;
+    height: 130vh;
+    /* border-style: solid; */
+    float: left;
 }
 .cardCreature{
-    width: 33%;
+    width: 24.1vw;
     height: 50%;
     float: left;
     border-style: solid;
+    border-color:black;
+    border-width: 0.2vw;
     background-color:saddlebrown;
+    margin: 0.25vw;
+    overflow: hidden;
 }
 .topBar{
+    display: flex;
+    align-items: center;    
+    justify-content: center;
     width: 100%;
-    height: 15%;
+    height: 8%;
     border-bottom-style: solid;
 }
-.name{
-    width: 55%;
+.shortName{
+    width: 53%;
+    margin-left: 2%;
     float: left;
+    color: white;
+    font-size:1.5vw;
+    font-weight: bold;
+}
+.mediumName{
+    width: 53%;
+    margin-left: 2%;
+    float: left;
+    color: white;
+    font-size:1.2vw;
+    font-weight: bold;
+}
+.longName{
+    width: 53%;
+    margin-left: 2%;
+    float: left;
+    color: white;
+    font-size:0.9vw;
+    font-weight: bold;
 }
 .typeSubclass{
-    width: 45%;
+    width: 43%;
+    margin-right: 2%;
     float: right;
     text-align: justify;
     text-align-last: right;
+    color: white;
+    font-size:0.9vw;
+
 }
+
 .secondBar{
-    width: 100%;
-    height: 15%;
+    width: 23.7vw;
+    height: 9%;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
+    padding-top: 0.05vw;
+    padding-bottom: 0.05vw; 
     border-bottom-style: solid;
     background-color: rgba(0, 0, 0, 0.3);
 
 }
 .cost{
-    width: 10%;
+    position: relative;
+    text-align: center;
+    color: white;
     float: left;
-    background-color:blueviolet;
+    width: 12%;
+    /* margin-left: 2%; */
+}
+.manaCostImage{
+    width: 100%;
+    position: relative;
+    text-align: center;
+    color: white;
+    float: left;
+}
+.manaCostText{
+    color:white;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:1.4vw;
+    font-weight: bold;
+
 }
 .action{
     width:10%;
+    position: relative;
+    text-align: center;
+    color: white;
     float: left;
+    margin-left: 1%;
 }
 .range{
-    width:10%;
+    position: relative;
+    text-align: center;
+    color: white;
     float: left;
-    background-color:lightgrey;
+    width: 10%;
+    margin-left: 1%;
+}
+.rangeImage{
+    width: 100%;
+    position: relative;
+    text-align: center;
+    color: white;
+    float: left;
+}
+.rangeText{
+    color:black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:0.75vw;
 }
 .target{
-    width:40%;
+    width:35%;
     float: left;
+    margin-left: 2%;
+    color: white;
+    font-size:1vw;
 }
 .level{
     width:30%;
     float: right;
     text-align: justify;
     text-align-last: right;
+    font-size:1vw;
 }
+
+
+
+
+
 .middle{
     width: 100%;
-    height: 15%;
+    height: 28%;
     border-bottom-style: solid;
+    position: relative;
 }
 .armor{
-    text-align: justify;
-    text-align-last: right;
+    position: absolute;
+    bottom:26%;
+    right:1%;
+    text-align: center;
+    color: white;
+    height:22%;
 }
-.health{
-    text-align: justify;
-    text-align-last: right;
+.armorImage{
+    height: 100%;
+    position: relative;
+    text-align: center;
+    color: white;
+    float: right;
 }
+.armorText{
+    color:white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:1.3vw;
+}
+.life{
+    position: absolute;
+    bottom:2%;
+    right:1%;
+    text-align: center;
+    color: white;
+    height:22%;
+}
+.lifeImage{
+    height: 100%;
+    position: relative;
+    text-align: center;
+    color: white;
+    float: right;
+}
+.lifeText{
+    color:white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:1.3vw;
+}
+.defense{
+    position: absolute;
+    bottom:50%;
+    right:1%;
+    text-align: center;
+    color: white;
+    height:22%;
+}
+.raisedDefense{
+    position: absolute;
+    bottom:50%;
+    right:1%;
+    text-align: center;
+    color: white;
+    height:22%;
+}
+.defenseImage{
+    height: 100%;
+    position: relative;
+    text-align: center;
+    color: white;
+    float: right;
+}
+.defenseText{
+    color:white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:1.1vw;
+}
+.channeling{
+    position: absolute;
+    bottom:50%;
+    right:1%;
+    text-align: center;
+    color: white;
+    height:22%;
+}
+.raisedChanneling{
+    position: absolute;
+    bottom:74%;
+    right:1%;
+    text-align: center;
+    color: white;
+    height:22%;
+}
+.channelingImage{
+    height: 100%;
+    position: relative;
+    text-align: center;
+    color: white;
+    float: right;
+}
+.channelingText{
+    color:white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:1.3vw;
+    text-shadow:
+        -.05vw -.05vw 0 #000,
+        .05vw -.05vw 0 #000,
+        -.05vw .05vw 0 #000,
+        .05vw .05vw 0 #000;
+
+}
+
+
+
+
+
 .bottom{
     width: 100%;
     height: 55%;
     overflow: hidden;
 }
 .attack{
-    width: 100%;
+    width: 23.7vw;
     height: 15%;
     border-bottom-style: solid;
     background-color:rgb(68, 68, 68);
     display: flex;
     align-items: center;    
-    justify-content: center
+    justify-content: center;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
+    padding-top: 0.05vw;
+    padding-bottom: 0.05vw;
 }
 
 .attackTypeImage, .attackDice, .attackType, .attackDamageType, .attackEffect, .attackText, .attackTextCompressed, .attackTextDecompressed {
     margin-left: 2%;
 }
 
-.attackAction, .attackTypeImage, .attackDice, .attackType, .attackDamageType {
+.attackAction, .attackTypeImage, .attackTypeImageContainer, .attackDice, .attackType, .attackDamageType {
     width: 9%;
 }
 .attackDice{
     margin-top: 1%;
 }
-.attackAction, .attackTypeImage, .attackDice, .attackType{
+.attackAction, .attackTypeImage, .attackTypeImageContainer, .attackDice, .attackType{
     /* margin-top: 2%; */
     position: relative;
     text-align: center;
@@ -116,10 +331,10 @@
 .attackDiceText{
     color:white;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size:1.5em;
+    font-size:1.4vw;
     font-weight: bold;
 
 }
@@ -130,7 +345,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size:0.75em;
+    font-size:0.7vw;
 }
 
 .attackDamageType{
@@ -139,7 +354,7 @@
     color:white;
     display: flex;
     align-items: center;
-    font-size:0.5em;
+    font-size:0.45vw;
 
 }
 .attackEffect{
@@ -147,9 +362,12 @@
     width: 29%;
     float: left;
     background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;    
+    justify-content: center;
 }
 .attackEffectImage{
-    margin-top: 7%;
+    /* margin-top: 7%; */
     width: 28%;
     float: left;
 }
@@ -161,7 +379,7 @@
     color:white;
     display: flex;
     align-items: center;
-    font-size:0.8em;
+    font-size:0.7vw;
 }
 .attackText{
     /* width: 29%; */
@@ -170,16 +388,16 @@
     color:white;
     display: flex;
     align-items: center;
-    font-size:0.7em;
+    font-size:0.6vw;
 }
 .attackTextDecompressed{
-    /* width: 49%; */
+    max-width: 65%;
     height:100%;
     float: left;
     color:white;
     display: flex;
     align-items: center;
-    font-size:0.95em;
+    font-size:0.9vw;
 }
 .attackTextCompressed{
     /* width: 19%; */
@@ -188,9 +406,12 @@
     color:white;
     display: flex;
     align-items: center;
-    font-size:0.5em;
+    font-size:0.45vw;
 }
 .text{
+    padding:1%;
     height:100%;
+    font-size:1.2vw;
+    text-align: center;
     background-color: rgba(255, 255, 255, 0.5);
 }

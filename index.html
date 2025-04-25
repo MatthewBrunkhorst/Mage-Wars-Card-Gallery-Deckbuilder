@@ -5,12 +5,13 @@
         <script defer src='index.js'></script>
     </head>
     <body>
-        <img src="Images/FullAction.png" alt="Full Action">
         <h1>Mage Wars Card Gallery (WIP)</h1>
         <p id="temptest">Use the search bar to search for cards.</p>
-        <input type="text" id="searchBar" onkeyup="search()" placeholder="Search for cards..">
-        <button id='search-button'>search</button>
-        <h3>Contact Info</h3>
+        
+        <div id="searchDiv" class="search">
+            <input type="text" id="searchBar" onkeyup="search()" placeholder="Search for cards..">
+            <button id='search-button'>search</button>
+        </div>
         <div id="cards" class="cardGrid">
             <div class = "cardCreature">
                 <div class = "topBar">
@@ -72,23 +73,5 @@
                 </div>
             </div>
         </div>
-        <h3>Personal Links</h3>
-        <p class="pLinks">
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Resume (Temporarily a YouTube Link)</a>
-            &emsp; &emsp;
-            <a href="https://www.linkedin.com/in/matthew-brunkhorst" target="_blank" rel="noopener noreferrer">Linkedin</a> 
-        </p>
-        <h2>Project Links</h2>
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Project 1 (Temporarily a YouTube Link)</a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Project 2 (Temporarily a YouTube Link)</a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Project 3 (Temporarily a YouTube Link)</a>
-            </li>
-        </ul>
     </body>
 </html>

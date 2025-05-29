@@ -6,72 +6,122 @@
     </head>
     <body>
         <h1>Mage Wars Card Gallery (WIP)</h1>
-        <p id="temptest">Use the search bar to search for cards.</p>
+        <p id="temptest">todo: Finish search functionality <br>
+            add more cards <br>
+            make cards look better
+        </p>
         
         <div id="searchDiv" class="search">
-            <input type="text" id="searchBar" onkeyup="search()" placeholder="Search for cards..">
-            <button id='search-button'>search</button>
-        </div>
-        <div id="cards" class="cardGrid">
-            <div class = "cardCreature">
-                <div class = "topBar">
-                    <div class = "name">
-                        Ravenous Ghoul
+            <div id = "searchInstructions">
+                To search for a card, type anything you want to search for (Keywords such as Flying, card names such as Cerberus, card type such as Creature, etc.) into the search bar and click search.
+                Searching is not case sensitive.
+                You can search for multiple things at once by separating terms with commas (e.x. Flying, Demon).  This will search for cards that contain at least one of the things searched for.
+                For more advanced search options, you can use Advanced Search.  Searching with a blank search bar (or reloading the page) will show all of the cards again.
+            </div>
+            <div class = searchBarsDiv>
+                <!-- can add onkeyup="search()" to searchBar -->
+                <input class="searchBar" type="text" id="searchBar1" placeholder="Search for cards.."> 
+                <button class="searchButton" id='searchButton'>Search</button>
+                <div class = advancedSearchDiv>
+                    <div id = "advancedSearchInstructions">
+                        To toggle advanced search, click the advanced search button.  This provides two additional search bars.  
+                        Searching with text in more than one search bar will search for cards that have at least one thing from each search bar.
+                        For example, putting "Flying, Demon" in the first bar and "Legendary, Burn" in the second bar will search for cards that contain either word Flying or the word Demon, and that also contain either the word Legendary or the word Burn.
+                        In other words, the search function treats the content of the search bars as: Find card that contains ((Flying OR demon) AND (legendary OR burn)).
                     </div>
-                    <div class = "typeSubclass">
-                        <div class = "type">
-                            Creature
-                        </div>
-                        <div class = "subclass">
-                            Undead
-                        </div>
-                    </div>
-                </div>
-                <div class = "secondBar">
-                    <div class = "cost">
-                        13
-                    </div>
-                    <div class = "action">
-                        Full
-                    </div>
-                    <div class = "range">
-                        0-0
-                    </div>
-                    <div class = "target">
-                        Zone
-                    </div>
-                    <div class = "level">
-                        3 Dark
-                    </div>
-                </div>
-                <div class = "middle">
-                    <div class = "armor">
-                        2
-                    </div>
-                    <div class = "health">
-                        9
-                    </div>
-                </div>
-                <div class = "bottom">
-                    <div class = "attack">
-                        <div class = "attackAction">
-                            Quick
-                        </div>
-                        <div class = "attackType">
-                            Melee
-                        </div>
-                        <div class = "attackDice">
-                            4
-                        </div>
-                        <div class = "attackText">
-                            Piercing 1
-                        </div>
-                    </div>
-                    <div class = "text">
-                        Fast * Psychic Immunity * Nonliving.  If a Corporeal creature was destroyed this round, and Ravenous Ghoul is in (or moves to) the zone it was destroyed in, as a quick action it may take that creature from its discard pile and remove it from the game to gain a growth marker.
-                    </div>
+                    <button class="advancedSearchButton" id='advancedSearchButton'>Toggle Advanced Search</button>
+                    <div id = "advancedSearchBarsDiv"></div>
                 </div>
             </div>
+            <div id = radioDiv>
+                <div id = typeRadiosDiv>
+                    Card Type: <br>
+                    <input type="radio" class="searchRadio" id="anyTypeRadio" name="typeRadio" value="-1" checked>
+                    <label for="anyTypeRadio" class="searchRadioLabel"> Any</label><br>
+                    <input type="radio" class="searchRadio" id="attackSpellRadio" name="typeRadio" value="1">
+                    <label for="attackSpellRadio" class="searchRadioLabel"> Attack Spell</label><br>
+                    <input type="radio" class="searchRadio" id="creatureRadio" name="typeRadio" value="2">
+                    <label for="creatureRadio" class="searchRadioLabel"> Creature</label><br>
+                    <input type="radio" class="searchRadio" id="conjurationRadio" name="typeRadio" value="3">
+                    <label for="conjurationRadio" class="searchRadioLabel"> Conjuration</label><br>
+                    <input type="radio" class="searchRadio" id="enchantmentRadio" name="typeRadio" value="4">
+                    <label for="enchantmentRadio" class="searchRadioLabel"> Enchantment</label><br>
+                    <input type="radio" class="searchRadio" id="equipmentRadio" name="typeRadio" value="5">
+                    <label for="equipmentRadio" class="searchRadioLabel"> Equipment</label><br>
+                    <input type="radio" class="searchRadio" id="incantationRadio" name="typeRadio" value="6">
+                    <label for="incantationRadio" class="searchRadioLabel"> Incantation</label><br>
+                </div>
+                <div id = schoolRadiosDiv>
+                    Magic School: <br>
+                    <input type="radio" class="searchRadio" id="anySchoolRadio" name="schoolRadio" value="-1" checked>
+                    <label for="anySchoolRadio" class="searchRadioLabel"> Any</label><br>
+                    <input type="radio" class="searchRadio" id="airRadio" name="schoolRadio" value="1">
+                    <label for="airRadio" class="searchRadioLabel"> Air</label><br>
+                    <input type="radio" class="searchRadio" id="arcaneRadio" name="schoolRadio" value="2">
+                    <label for="arcaneRadio" class="searchRadioLabel"> Arcane</label><br>
+                    <input type="radio" class="searchRadio" id="darkRadio" name="schoolRadio" value="3">
+                    <label for="darkRadio" class="searchRadioLabel"> Dark</label><br>
+                    <input type="radio" class="searchRadio" id="earthRadio" name="schoolRadio" value="4">
+                    <label for="earthRadio" class="searchRadioLabel"> Earth</label><br>
+                    <input type="radio" class="searchRadio" id="fireRadio" name="schoolRadio" value="5">
+                    <label for="fireRadio" class="searchRadioLabel"> Fire</label><br>
+                    <input type="radio" class="searchRadio" id="holyRadio" name="schoolRadio" value="6">
+                    <label for="holyRadio" class="searchRadioLabel"> Holy</label><br>
+                    <input type="radio" class="searchRadio" id="mindRadio" name="schoolRadio" value="7">
+                    <label for="mindRadio" class="searchRadioLabel"> Mind</label><br>
+                    <input type="radio" class="searchRadio" id="natureRadio" name="schoolRadio" value="8">
+                    <label for="natureRadio" class="searchRadioLabel"> Nature</label><br>
+                    <input type="radio" class="searchRadio" id="warRadio" name="schoolRadio" value="9">
+                    <label for="warRadio" class="searchRadioLabel"> War</label><br>
+                    <input type="radio" class="searchRadio" id="waterRadio" name="schoolRadio" value="10">
+                    <label for="waterRadio" class="searchRadioLabel"> Water</label><br>
+                </div>
+                <div id = actionRadiosDiv>
+                    Action: <br>
+                    <input type="radio" class="searchRadio" id="anyActionRadio" name="actionRadio" value="-1" checked>
+                    <label for="anyActionRadio" class="searchRadioLabel"> Any</label><br>
+                    <input type="radio" class="searchRadio" id="fullRadio" name="actionRadio" value="2">
+                    <label for="fullRadio" class="searchRadioLabel"> Full</label><br>
+                    <input type="radio" class="searchRadio" id="quickRadio" name="actionRadio" value="1">
+                    <label for="quickRadio" class="searchRadioLabel"> Quick</label><br>
+                </div>
+                <div id = slotRadiosDiv>
+                    Equipment Slot: <br>
+                    <input type="radio" class="searchRadio" id="anySlotRadio" name="slotRadio" value="-1" checked>
+                    <label for="anySlotRadio" class="searchRadioLabel"> Any</label><br>
+                    <input type="radio" class="searchRadio" id="amuletRadio" name="slotRadio" value="1">
+                    <label for="amuletRadio" class="searchRadioLabel"> Amulet</label><br>
+                    <input type="radio" class="searchRadio" id="beltRadio" name="slotRadio" value="2">
+                    <label for="beltRadio" class="searchRadioLabel"> Belt</label><br>
+                    <input type="radio" class="searchRadio" id="bootsRadio" name="slotRadio" value="3">
+                    <label for="bootsRadio" class="searchRadioLabel"> Boots</label><br>
+                    <input type="radio" class="searchRadio" id="chestPieceRadio" name="slotRadio" value="4">
+                    <label for="chestPieceRadio" class="searchRadioLabel"> Chest Piece</label><br>
+                    <input type="radio" class="searchRadio" id="cloakRadio" name="slotRadio" value="5">
+                    <label for="cloakRadio" class="searchRadioLabel"> Cloak</label><br>
+                    <input type="radio" class="searchRadio" id="glovesRadio" name="slotRadio" value="6">
+                    <label for="glovesRadio" class="searchRadioLabel"> Gloves</label><br>
+                    <input type="radio" class="searchRadio" id="helmetRadio" name="slotRadio" value="7">
+                    <label for="helmetRadio" class="searchRadioLabel"> Helmet</label><br>
+                    <input type="radio" class="searchRadio" id="ringRadio" name="slotRadio" value="8">
+                    <label for="ringRadio" class="searchRadioLabel"> Ring</label><br>
+                    <input type="radio" class="searchRadio" id="shieldRadio" name="slotRadio" value="9">
+                    <label for="shieldRadio" class="searchRadioLabel"> Shield</label><br>
+                    <input type="radio" class="searchRadio" id="weaponRadio" name="slotRadio" value="10">
+                    <label for="weaponRadio" class="searchRadioLabel"> Weapon</label><br>
+                    <input type="radio" class="searchRadio" id="weaponOrShieldRadio" name="slotRadio" value="11">
+                    <label for="weaponOrShieldRadio" class="searchRadioLabel"> Weapon Or Shield</label><br>
+                    <input type="radio" class="searchRadio" id="weaponAndShieldRadio" name="slotRadio" value="12">
+                    <label for="weaponAndShieldRadio" class="searchRadioLabel"> Weapon And Shield</label><br>
+                    <input type="radio" class="searchRadio" id="noSlotRadio" name="slotRadio" value="13">
+                    <label for="noSlotRadio" class="searchRadioLabel"> No Slot</label><br>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div id="cards" class="cardGrid">
+            
         </div>
     </body>
 </html>

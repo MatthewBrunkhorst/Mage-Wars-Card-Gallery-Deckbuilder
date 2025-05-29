@@ -1,17 +1,49 @@
 .search{
     width: 20vw;
-    height: 130vh;
+    /* height: 130vh; */
     /* border-style: solid; */
     float: left;
     border-style:solid;
     border-width:0.1vw;
+    font-size:0.95vw;
 }
+.searchButton{
+    width:18.5vw;
+    height:3vw;
+    font-size:1.5vw;
+}
+.advancedSearchButton{
+    width:18.5vw;
+    height:1.3vw;
+    font-size:0.8vw;
+}
+.searchBar{
+    width:18vw;
+    height:1.05vw;
+    font-size:0.95vw;
+}
+.searchRadio{
+    width:0.8vw;
+    height:0.8vw;
+}
+
 
 .cardGrid{
     width: 75vw;
     height: 130vh;
     /* border-style: solid; */
     float: left;
+}
+.cardAttackSpell{
+    width: 24.1vw;
+    height: 50%;
+    float: left;
+    border-style: solid;
+    border-color:black;
+    border-width: 0.2vw;
+    background-color:red;
+    margin: 0.25vw;
+    overflow: hidden;
 }
 .cardCreature{
     width: 24.1vw;
@@ -24,6 +56,51 @@
     margin: 0.25vw;
     overflow: hidden;
 }
+.cardConjuration{
+    width: 24.1vw;
+    height: 50%;
+    float: left;
+    border-style: solid;
+    border-color:black;
+    border-width: 0.2vw;
+    background-color:green;
+    margin: 0.25vw;
+    overflow: hidden;
+}
+.cardEnchantment{
+    width: 24.1vw;
+    height: 50%;
+    float: left;
+    border-style: solid;
+    border-color:black;
+    border-width: 0.2vw;
+    background-color:yellow;
+    margin: 0.25vw;
+    overflow: hidden;
+}
+.cardEquipment{
+    width: 24.1vw;
+    height: 50%;
+    float: left;
+    border-style: solid;
+    border-color:black;
+    border-width: 0.2vw;
+    background-color:gray;
+    margin: 0.25vw;
+    overflow: hidden;
+}
+.cardIncantation{
+    width: 24.1vw;
+    height: 50%;
+    float: left;
+    border-style: solid;
+    border-color:black;
+    border-width: 0.2vw;
+    background-color:purple;
+    margin: 0.25vw;
+    overflow: hidden;
+}
+
 .topBar{
     display: flex;
     align-items: center;    

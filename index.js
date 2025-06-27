@@ -563,6 +563,59 @@ const BlankDefenses = [BlankDefense, BlankDefense];
 const BlankSubtype = ["NONE", "NONE", "NONE", "NONE"];
 const cards = [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
     //Attack Spells:
+
+    //Air Primary:
+    ["Arc Lightning",         AttackSpell, ["Lightning", "NONE", "NONE", "NONE"],    5,  -1, Quick, 0, 1, "Creature or Conjuration",            [1, [1, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, Condition, Daze, Stun, LightningDamage, Ethereal, Unavoidable, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],          [["NONE", ACTION, Ranged, 0, 1, Lightning, 3, [7, "Daze"],   [9, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal, Unavoidable"],                             BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Bolt of V'Tar",         AttackSpell, ["V'Tar", "Lightning", "NONE", "NONE"],   8,  -1, Quick, 0, 2, "Creature or Conjuration",            [2, [2, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, Condition, Daze, Stun, LightningDamage, Ethereal, ManaDrainPlusX, PiercingPlusX, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD], [["NONE", ACTION, Ranged, 0, 2, Lightning, 3, [6, "Daze"],   [8, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal"],                                          BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "This attack gains the Mana Drain +X and Piercing +X traits. X is the number of V'tar Orbs you control."],                                                                                                      
+    ["Chain Lightning",       AttackSpell, ["Lightning", "NONE", "NONE", "NONE"],    12, -1, Full,  0, 1, "Creature or Conjuration",            [3, [3, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, Condition, Daze, Stun, LightningDamage, Ethereal, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],              [["NONE", ACTION, Ranged, 0, 1, Lightning, 5, [5, "Daze"],   [8, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal"],                                          BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "Each time Chain Lightning damages a target, it may attack another target. That target must be in LoS of the last target, and may be up to 1 zone away from that target. Each successive attack rolls 1 fewer attack dice, and subtracts 1 more from the effect die roll. Chain Lightning can't attack the same target twice."],                                                                                                      
+    ["Electrify",             AttackSpell, ["Lightning", "NONE", "NONE", "NONE"],    9,  -1, Full,  0, 0, "Zone",                               [2, [2, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, ZoneAttack, Condition, Daze, Stun, LightningDamage, Ethereal, Unavoidable, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],       [["NONE", ACTION, Zone,   0, 0, Lightning, 4, [7, "Daze"],   [9, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal, Unavoidable"],                             BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "Attacks all objects in the zone except the caster."],                                                                                                      
+    ["Jet Stream",            AttackSpell, ["Wind", "NONE", "NONE", "NONE"],         4,  -1, Quick, 0, 2, "Creature or Conjuration",            [1, [1, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, Condition, Daze, Push, WindDamage, Ethereal, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                   [["NONE", ACTION, Ranged, 0, 2, Wind,      2, [4, "Push"],   [11, "Push & Daze"],   [-1, "NONE"],        [-1, "NONE"], "Ethereal, +2 vs. Flying"],                           BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Lightning Bolt",        AttackSpell, ["Lightning", "NONE", "NONE", "NONE"],    8,  -1, Quick, 0, 2, "Creature or Conjuration",            [2, [2, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, Condition, Daze, Stun, LightningDamage, Ethereal, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],              [["NONE", ACTION, Ranged, 0, 2, Lightning, 5, [6, "Daze"],   [8, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal"],                                          BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Sandstorm",             AttackSpell, ["Wind", "NONE", "NONE", "NONE"],         8,  -1, Full,  0, 2, "Zone",                               [2, [1, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [1, Earth, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart], [RangedAttack, ZoneAttack, Condition, Daze, Push, WindDamage, Unavoidable, PiercingPlusX, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],       [["NONE", ACTION, Zone,   0, 2, Wind,      2, [4, "Push"],   [7, "Daze"],           [10, "Push & Daze"], [-1, "NONE"], "Piercing +1, +2 vs. Flying, Unavoidable"],           BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "If Pushed, roll for random direction."],                                                                                                      
+    ["Thunderbolt",           AttackSpell, ["Lightning", "NONE", "NONE", "NONE"],    10, -1, Full,  0, 3, "Creature or Conjuration",            [3, [3, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, Condition, Daze, Stun, LightningDamage, Ethereal, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],              [["NONE", ACTION, Ranged, 0, 3, Lightning, 6, [4, "Daze"],   [7, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal"],                                          BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Windstorm",             AttackSpell, ["Wind", "NONE", "NONE", "NONE"],         4,  -1, Full,  0, 1, "Creature or Conjuration",            [1, [1, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                             [RangedAttack, Condition, Push, Sweeping, WindDamage, Ethereal, Unavoidable, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],           [["NONE", ACTION, Ranged, 0, 1, Wind,      2, [6, "Push"],   [-1, "NONE"],          [-1, "NONE"],        [-1, "NONE"], "Sweeping, Unavoidable, +2 vs. Flying, Ethereal"],    BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+
+    //Arcane Primary:
+    ["V'Tarrian Energy Wave", AttackSpell, ["V'Tar", "NONE", "NONE", "NONE"],        12, -1, Full,  0, 2, "2 Adjacent Zones",                   [3, [3, Arcane, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                          [RangedAttack, ZoneAttack, Unavoidable, Ethereal, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],           [["NONE", ACTION, Zone,   0, 2, Typeless,  2, [-1, "NONE"],  [-1, "NONE"],          [-1, "NONE"],        [-1, "NONE"], "Unavoidable, Ethereal"],                             BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "This attack rolls 1 extra die for each V'Tar Orb you control. It also affects any wall between the 2 targeted zones."],                                                                                                      
+
+    //Dark Primary:
+    ["Devil's Trident",       AttackSpell, ["Flame", "NONE", "NONE", "NONE"],        7,  -1, Quick, 0, 1, "Creature",                           [2, [1, Dark, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [1, Fire, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart], [RangedAttack, Condition, Burn, Cripple, Defrost, FlameDamage, PiercingPlusX, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],          [["NONE", ACTION, Ranged, 0, 1, Flame,    4, [3, "Cripple"], [6, "Cripple & Burn"], [9, "Burn"],         [-1, "NONE"], "Piercing +2, Defrost"],                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+
+    //Earth Primary:
+    ["Hail of Stones",        AttackSpell, ["NONE", "NONE", "NONE", "NONE"],         8,  -1, Full,  0, 1, "Zone",                               [2, [2, Earth, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, ZoneAttack, Condition, Daze, Stun, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                    [["NONE", ACTION, Zone,   0, 1, Typeless, 4, [6, "Daze"],    [11, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "NONE"],                                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Hurl Boulder",          AttackSpell, ["NONE", "NONE", "NONE", "NONE"],         8,  -1, Quick, 0, 2, "Creature or Conjuration",            [2, [2, Earth, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, Condition, Slam, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                    [["NONE", ACTION, Ranged, 0, 2, Typeless, 7, [8, "Slam"],    [-1, "NONE"],           [-1, "NONE"],        [-1, "NONE"], "NONE"],                                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Hurl Meteorite",        AttackSpell, ["NONE", "NONE", "NONE", "NONE"],         12, -1, Full,  0, 3, "Creature or Conjuration",            [3, [3, Earth, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, Condition, Daze, Stun, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                       [["NONE", ACTION, Ranged, 0, 3, Typeless, 9, [5, "Daze"],    [9, "Stun"],            [-1, "NONE"],        [-1, "NONE"], "NONE"],                                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Hurl Rock",             AttackSpell, ["NONE", "NONE", "NONE", "NONE"],         4,  -1, Quick, 0, 1, "Creature or Conjuration",            [1, [1, Earth, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, Condition, Daze, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                    [["NONE", ACTION, Ranged, 0, 1, Typeless, 5, [9, "Daze"],    [-1, "NONE"],           [-1, "NONE"],        [-1, "NONE"], "NONE"],                                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+
+    //Fire Primary:
+    ["Dragon's Breath",       AttackSpell, ["Flame", "NONE", "NONE", "NONE"],        12, -1, Full,  0, 3, "Creature or Conjuration",            [3, [3, Fire, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Burn, Defrost, FlameDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                [["NONE", ACTION, Ranged, 0, 3, Flame,    4, [3, "Burn"],    [10, "2 Burn"],        [-1, "NONE"],        [-1, "NONE"], "Defrost"],                                           BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "At the end of the attack, as part of the same attack action, Dragon's Breath may attack a second target (similar to a Sweeping attack). The second target must be in an adjacent zone, 1 zone farther away than the first target. Both targets must be within range."],                                                                                                      
+    ["Fireball",              AttackSpell, ["Flame", "NONE", "NONE", "NONE"],        8,  -1, Quick, 0, 2, "Creature or Conjuration",            [2, [2, Fire, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Burn, Defrost, FlameDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                [["NONE", ACTION, Ranged, 0, 2, Flame,    6, [4, "Burn"],    [11, "2 Burn"],        [-1, "NONE"],        [-1, "NONE"], "Defrost"],                                           BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Firestorm",             AttackSpell, ["Flame", "NONE", "NONE", "NONE"],        11, -1, Full,  0, 1, "Zone",                               [3, [3, Fire, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, ZoneAttack, Condition, Burn, Defrost, FlameDamage, Unavoidable, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],         [["NONE", ACTION, Zone,   0, 1, Flame,    5, [5, "Burn"],    [10, "2 Burn"],        [-1, "NONE"],        [-1, "NONE"], "Defrost, Unavoidable"],                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Flameblast",            AttackSpell, ["Flame", "NONE", "NONE", "NONE"],        5,  -1, Quick, 0, 1, "Creature or Conjuration",            [1, [1, Fire, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Burn, Defrost, FlameDamage, Unavoidable, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],            [["NONE", ACTION, Ranged, 0, 1, Flame,    4, [7, "Burn"],    [11, "2 Burn"],        [-1, "NONE"],        [-1, "NONE"], "Unavoidable, Defrost"],                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Ring of Fire",          AttackSpell, ["Flame", "NONE", "NONE", "NONE"],        9,  -1, Full,  0, 0, "Zone",                               [2, [2, Fire, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, ZoneAttack, Condition, Burn, Defrost, FlameDamage, Unavoidable, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],         [["NONE", ACTION, Zone,   0, 0, Flame,    5, [7, "Burn"],    [11, "2 Burn"],        [-1, "NONE"],        [-1, "NONE"], "Unavoidable, Defrost"],                              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "Attacks all objects in the zone except the caster."],                                                                                                      
+
+    //Holy Primary:
+    ["Blinding Flash",        AttackSpell, ["Light", "NONE", "NONE", "NONE"],        7,  -1, Full,  0, 0, "Zone",                               [2, [2, Holy, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, ZoneAttack, Condition, Daze, Stun, Ethereal, Unavoidable, LightDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],           [["NONE", ACTION, Zone,   0, 0, Light,    2, [4, "Daze"],    [10, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal, Unavoidable, +2 vs. Nonliving Creatures"], BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "Attacks all objects in the zone except the caster."],                                                                                                      
+    ["Luminous Blast",        AttackSpell, ["Light", "NONE", "NONE", "NONE"],        5,  -1, Quick, 0, 0, "Creature or Conjuration",            [1, [1, Holy, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Daze, Stun, Ethereal, LightDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                  [["NONE", ACTION, Ranged, 0, 0, Light,    5, [4, "Daze"],    [11, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal"],                                          BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Pillar of Light",       AttackSpell, ["Light", "NONE", "NONE", "NONE"],        5,  -1, Quick, 0, 2, "Creature or Conjuration",            [1, [1, Holy, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Daze, Stun, Ethereal, LightDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                  [["NONE", ACTION, Ranged, 0, 2, Light,    2, [4, "Daze"],    [11, "Stun"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal, +2 vs. Nonliving Creatures"],              BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Sunfire Burst",         AttackSpell, ["Light", "NONE", "NONE", "NONE"],        5,  -1, Quick, 0, 1, "Creature or Conjuration",            [1, [1, Holy, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Daze, Burn, Ethereal, Unavoidable, LightDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],              [["NONE", ACTION, Ranged, 0, 1, Light,    2, [6, "Daze"],    [8, "Daze & Burn"],     [-1, "NONE"],        [-1, "NONE"], "Ethereal, Unavoidable, +2 vs. Nonliving Creatures"], BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+
+    //Mind Primary:
+    ["Force Hammer",          AttackSpell, ["Force", "NONE", "NONE", "NONE"],        9,  -1, Quick, 0, 2, "Creature or Conjuration",            [2, [2, Mind, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Slam, Ethereal, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                   [["NONE", ACTION, Ranged, 0, 2, Typeless, 6, [8, "Slam"],    [-1, "NONE"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal, +2 vs. Corporeal Conjurations"],           BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Invisible Fist",        AttackSpell, ["Force", "NONE", "NONE", "NONE"],        4,  -1, Quick, 0, 1, "Creature or Conjuration",            [1, [1, Mind, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                            [RangedAttack, Condition, Daze, Ethereal, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],                   [["NONE", ACTION, Ranged, 0, 1, Typeless, 4, [8, "Daze"],    [-1, "NONE"],           [-1, "NONE"],        [-1, "NONE"], "Ethereal"],                                          BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+
+    //Nature Primary (None):
+
+    //War Primary (None):
+
+    //Water Primary:
+    ["Acid Ball",             AttackSpell, ["Acid", "NONE", "NONE", "NONE"],         5,  -1, Quick, 0, 2, "Creature or Conjuration",            [1, [1, Water, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, Condition, Corrode, AcidDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],              [["NONE", ACTION, Ranged, 0, 2, Acid,     3, [1, "Corrode"], [5, "2 Corrode"],      [-1, "NONE"],        [-1, "NONE"], "NONE"],                                               BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Geyser",                AttackSpell, ["Hydro", "NONE", "NONE", "NONE"],        4,  -1, Quick, 0, 1, "Creature or Conjuration",            [1, [1, Water, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, Condition, Daze, Unavoidable, HydroDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],            [["NONE", ACTION, Ranged, 0, 1, Hydro,    3, [5, "Daze"],    [-1, "NONE"],          [-1, "NONE"],        [-1, "NONE"], "Unavoidable"],                                        BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "During the Roll Dice Step of this attack, if the target has any Burn conditions on it, cancel this attack and remove all Burn conditions from the target instead."],                                                                                                      
+    ["Surging Wave",          AttackSpell, ["Hydro", "NONE", "NONE", "NONE"],        5,  -1, Quick, 0, 2, "Non-Flying Creature or Conjuration", [1, [1, Water, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, Condition, Slam, Push, Extinguish, Unavoidable, HydroDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],            [["NONE", ACTION, Ranged, 0, 2, Hydro,    3, [3, "Slam"],    [8, "Push & Slam"],    [-1, "NONE"],        [-1, "NONE"], "Extinguish, Unavoidable"],                            BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Swell",                 AttackSpell, ["Hydro", "NONE", "NONE", "NONE"],        4,  -1, Quick, 0, 2, "Non-Flying Creature or Conjuration", [1, [1, Water, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, Condition, Push, Extinguish, Unavoidable, HydroDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],         [["NONE", ACTION, Ranged, 0, 2, Hydro,    3, [7, "Push"],    [-1, "NONE"],          [-1, "NONE"],        [-1, "NONE"], "Extinguish, Unavoidable"],                            BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "NONE"],                                                                                                      
+    ["Tsunami",               AttackSpell, ["Hydro", "NONE", "NONE", "NONE"],        14, -1, Full,  0, 1, "Zone",                               [3, [3, Water, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart],                           [RangedAttack, ZoneAttack, Condition, Push, Extinguish, Unavoidable, HydroDamage, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD],      [["NONE", ACTION, Zone,   0, 1, Hydro,    3, [5, "Push"],    [-1, "NONE"],          [-1, "NONE"],        [-1, "NONE"], "Extinguish, Unavoidable"],                            BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, -1, -1, "When Tsunami is cast, choose a direction. After the attack resolves, repeat the attack one zone further away in the chosen direction. This continues until there are no farther zones. Flying creatures are immune to Tsunami."],                                                                                                      
+
+
     //Creatures:
     //["NAME", Creature, ["NONE", "NONE", "NONE", "NONE"], COST, -1, Full, 0, 0, "Zone", [-1, [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart], [KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], BlankAttack, BlankAttack, BlankAttack, BlankDefenses, SLOT, -1, -1, ""]                                                                                                      
     
@@ -607,6 +660,26 @@ const cards = [
 
     
     //Conjurations:
+    //Air Primary:
+
+    //Arcane Primary:
+
+    //Dark Primary:
+
+    //Earth Primary:
+
+    //Fire Primary:
+
+    //Holy Primary:
+
+    //Mind Primary:
+
+    //Nature Primary:
+
+    //War Primary:
+
+    //Water Primary:
+
     //Enchantments:
     //Equipment:
 
@@ -1309,7 +1382,9 @@ const DefenseImage = "Images/Defense.png";
 const AttackDieImage = "Images/AttackDie.png";
 const EffectDieImage = "Images/EffectDie.png";
 const MeleeImage = "Images/Melee.png";
+const NotMeleeImage = "Images/NotMelee.png";
 const RangedImage = "Images/Ranged.png";
+const NotRangedImage = "Images/NotRanged.png";
 const ZoneImage = "Images/ZoneAttack.png";
 const TrampleImage = "Images/Trample.png";
 const DamageBarrierImage = "Images/DamageBarrier.png";
@@ -1600,10 +1675,28 @@ function addCardToGrid(card) {
                 defenseImg.className = "defenseImage";
                 defenseImg.src = DefenseImage;
                 defenseDiv.appendChild(defenseImg);
-                var defenseTextDiv = document.createElement('div');
-                defenseTextDiv.className = "defenseText";
-                defenseTextDiv.textContent = (currentDefense[0] + "+");
-                defenseDiv.appendChild(defenseTextDiv);
+                var defenseRollTextDiv = document.createElement('div');
+                defenseRollTextDiv.className = "defenseRollText";
+                defenseRollTextDiv.textContent = (currentDefense[0] + "+");
+                defenseDiv.appendChild(defenseRollTextDiv);
+                var defenseUsesTextDiv = document.createElement('div');
+                defenseUsesTextDiv.className = "defenseUsesText";
+                if (currentDefense[1] === -1) {
+                    defenseUsesTextDiv.textContent = ("∞");
+                } else {
+                    defenseUsesTextDiv.textContent = (currentDefense[1] + "x");
+                }
+                defenseDiv.appendChild(defenseUsesTextDiv);
+                if (currentDefense[2] !== Any) {
+                    var defenseAttackTypeImg = document.createElement('img');
+                    defenseAttackTypeImg.className = "defenseAttackType";
+                    if (currentDefense[2] === Melee) {
+                        defenseAttackTypeImg.src = NotRangedImage;
+                    } else {
+                        defenseAttackTypeImg.src = NotMeleeImage;
+                    }
+                    middleDiv.appendChild(defenseAttackTypeImg);
+                }
                 fourthItem = true;
             }
         }
@@ -1669,30 +1762,40 @@ function addCardToGrid(card) {
             if (defenses(card)[j][2] !== MELEERANGEDZONETRAMPLEANY) {
                 var currentDefense = defenses(card)[j];
                 var defenseDiv = document.createElement('div');
-                if (fourthItem) {
-                    defenseDiv.className = "raisedDefense";
-                } else {
-                    defenseDiv.className = "defense";
-                }
+                defenseDiv.className = "unraisedDefense";
                 middleDiv.appendChild(defenseDiv);
                 var defenseImg = document.createElement('img');
                 defenseImg.className = "defenseImage";
                 defenseImg.src = DefenseImage;
                 defenseDiv.appendChild(defenseImg);
-                var defenseTextDiv = document.createElement('div');
-                defenseTextDiv.className = "defenseText";
-                defenseTextDiv.textContent = (currentDefense[0] + "+");
-                defenseDiv.appendChild(defenseTextDiv);
+                var defenseRollTextDiv = document.createElement('div');
+                defenseRollTextDiv.className = "defenseRollText";
+                defenseRollTextDiv.textContent = (currentDefense[0] + "+");
+                defenseDiv.appendChild(defenseRollTextDiv);
+                var defenseUsesTextDiv = document.createElement('div');
+                defenseUsesTextDiv.className = "defenseUsesText";
+                if (currentDefense[1] === -1) {
+                    defenseUsesTextDiv.textContent = ("∞");
+                } else {
+                    defenseUsesTextDiv.textContent = (currentDefense[1] + "x");
+                }
+                defenseDiv.appendChild(defenseUsesTextDiv);
+                if (currentDefense[2] !== Any) {
+                    var defenseAttackTypeImg = document.createElement('img');
+                    defenseAttackTypeImg.className = "unraisedDefenseAttackType";
+                    if (currentDefense[2] === Melee) {
+                        defenseAttackTypeImg.src = NotRangedImage;
+                    } else {
+                        defenseAttackTypeImg.src = NotMeleeImage;
+                    }
+                    middleDiv.appendChild(defenseAttackTypeImg);
+                }
             }
         }
 
         if (otherText(card).includes("Channeling ")) {
             var channelingDiv = document.createElement('div');
-            if (fourthItem) {
-                channelingDiv.className = "raisedChanneling";
-            } else {
-                channelingDiv.className = "channeling";
-            }
+            channelingDiv.className = "unraisedChanneling";
             middleDiv.appendChild(channelingDiv);
             var channelingImg = document.createElement('img');
             channelingImg.className = "channelingImage";
@@ -1715,6 +1818,19 @@ function addCardToGrid(card) {
             var attackDiv = document.createElement('div');
             attackDiv.className = "attack";
             bottomDiv.appendChild(attackDiv);
+            if (currentAttack[11].substring(1, 5) === "COST") {
+                var attackCostDiv = document.createElement('div');
+                attackCostDiv.className = "attackCost";
+                attackDiv.appendChild(attackCostDiv);
+                var attackCostImg = document.createElement('img');
+                attackCostImg.className = "attackCostImageContainer";
+                attackCostImg.src = ManaCostImage;
+                attackCostDiv.appendChild(attackCostImg);
+                var attackCostTextDiv = document.createElement('div');
+                attackCostTextDiv.className = "attackCostText";
+                attackCostTextDiv.textContent = currentAttack[11].substring(0, 1);
+                attackCostDiv.appendChild(attackCostTextDiv);
+            }
             if (type(card) === Creature || type(card) === Equipment){
                 if (currentAttack[1] === Quick) {
                     var attackActionImg = document.createElement('img');
@@ -1838,7 +1954,11 @@ function addCardToGrid(card) {
                 } else {
                     attackTextDiv.className = "attackText";
                 }
-                attackTextDiv.textContent = currentAttack[11];
+                if (currentAttack[11].substring(1, 5) !== "COST") {
+                    attackTextDiv.textContent = currentAttack[11];
+                } else {
+                    attackTextDiv.textContent = currentAttack[11].substring(5);
+                }
                 attackDiv.appendChild(attackTextDiv);
             }
         }

@@ -1,11 +1,51 @@
-.search{
+.sidebar{
     width: 20vw;
+    position:fixed;
+    top:1vh;
     /* height: 130vh; */
     /* border-style: solid; */
     float: left;
     border-style:solid;
     border-width:0.1vw;
     font-size:0.95vw;
+    margin: 0;
+    padding: 0;
+    height: 98%;
+    overflow: auto;
+}
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 1vw;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.3vw;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+  
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.search, .deckBuilding {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 .searchButton{
     width:18.5vw;
@@ -26,13 +66,22 @@
     width:0.8vw;
     height:0.8vw;
 }
+.decklist{
+    height:auto;
+}
 
 
+.title {
+    width: 75vw;
+    float: right;
+}
 .cardGrid{
     width: 75vw;
     height: 130vh;
     /* border-style: solid; */
-    float: left;
+    float: right;
+    margin: 0;
+    padding: 0;
 }
 .cardAttackSpell{
     width: 24.1vw;

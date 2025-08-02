@@ -7,18 +7,122 @@
         <script defer src='index.js'></script>
     </head>
     <body>
-        <div id = "title" class="title">
-            <h1>Mage Wars Card Gallery (WIP)</h1>
-            <p id="temptest">todo: Add basic explanation for game <br>
-                Finish search functionality <br>
-                add more cards/mages <br>
-                make cards look better <br>
-                make deckbuilding better
-            </p>
+        <div id = "mainContent" class = "mainContent">
+            <div id = "title" class="title">
+                <div>Mage Wars Card Gallery (WIP)</div>
+                <!-- <p id="temptest">todo: Add basic explanation for game <br>
+                    Finish search functionality <br>
+                    add more cards/mages <br>
+                    make cards look better <br>
+                    make deckbuilding better
+                </p> -->
+            </div>
+            <div id="searchDiv" class="search">
+                <!-- <div id = "searchInstructions" class = "tooltip">
+                    
+                    <span class="tooltipText">
+                        test
+                    </span>
+                </div> -->
+                <div class = searchBarsDiv>
+                    <div class = "tooltipDown">
+                        <input class="searchBar tooltipDown" type="text" id="searchBar1" placeholder="Search for cards..        (Hover for more info)">
+                        and 
+                        <input class="searchBar tooltipDown" type="text" id="searchBar2" placeholder="Search for cards..        (Hover for more info)">
+                        and
+                        <input class="searchBar tooltipDown" type="text" id="searchBar3" placeholder="Search for cards..        (Hover for more info)">
+                        <span class="tooltipTextDown">
+                            To search for a card, type anything you want to search for (Keywords such as Flying, card names such as Cerberus, card type such as Creature, etc.) into the search bar and click search.
+                            Searching is not case sensitive.
+                            You can search for multiple things at once by separating terms with commas (e.x. Flying, Demon).  This will search for cards that contain at least one of the things searched for.
+                            For more advanced search options, you can use Advanced Search.  Searching with a blank search bar (or reloading the page) will show all of the cards again.
+                            Searching with text in more than one search bar will search for cards that have at least one thing from each search bar.
+                            For example, putting "Flying, Demon" in the first bar and "Legendary, Burn" in the second bar will search for cards that contain either word Flying or the word Demon, and that also contain either the word Legendary or the word Burn.
+                            In other words, the search function treats the content of the search bars as: Find card that contains ((Flying OR demon) AND (legendary OR burn)).
+                        </span>
+                    </div>
+                     
+                    
+                    <!-- <div class = advancedSearchDiv>
+                        <div id = "advancedSearchInstructions">
+                            To toggle advanced search, click the advanced search button.  This provides two additional search bars.  
+                            Searching with text in more than one search bar will search for cards that have at least one thing from each search bar.
+                            For example, putting "Flying, Demon" in the first bar and "Legendary, Burn" in the second bar will search for cards that contain either word Flying or the word Demon, and that also contain either the word Legendary or the word Burn.
+                            In other words, the search function treats the content of the search bars as: Find card that contains ((Flying OR demon) AND (legendary OR burn)).
+                        </div>
+                        <button class="advancedSearchButton" id='advancedSearchButton'>Toggle Advanced Search</button>
+                        <div id = "advancedSearchBarsDiv"></div>
+                    </div> -->
+                </div>
+                <div class="searchSelectContainer">
+                    Card Type: <br>
+                    <select class="searchSelect" name="typeSelect" id="typeSelectDiv">
+                        <option value="-1">Any</option>
+                        <option value="1">Attack</option>
+                        <option value="2">Creature</option>
+                        <option value="3">Conjuration</option>
+                        <option value="4">Enchantment</option>
+                        <option value="5">Equipment</option>
+                        <option value="6">Incantation</option>
+                    </select>
+                </div>
+                <div class="searchSelectContainer">
+                    Magic School: <br>
+                    <select class="searchSelect" name="schoolSelect" id="schoolSelectDiv">
+                        <option value="-1">Any</option>
+                        <option value="1">Air</option>
+                        <option value="2">Arcane</option>
+                        <option value="3">Dark</option>
+                        <option value="4">Earth</option>
+                        <option value="5">Fire</option>
+                        <option value="6">Holy</option>
+                        <option value="7">Mind</option>
+                        <option value="8">Nature</option>
+                        <option value="9">War</option>
+                        <option value="10">Water</option>
+                    </select>
+                </div>
+                <div class="searchSelectContainer">
+                    Action: <br>
+                    <select class="searchSelect" name="actionSelect" id="actionSelectDiv">
+                        <option value="-1">Any</option>
+                        <option value="2">Full</option>
+                        <option value="1">Quick</option>
+                    </select> 
+                </div>
+                <div class="searchSelectContainer">
+                    Equipment Slot: <br>
+                    <select class="searchSelect" name="slotSelect" id="slotSelectDiv">
+                        <option value="-1">Any</option>
+                        <option value="1">Amulet</option>
+                        <option value="2">Belt</option>
+                        <option value="3">Boots</option>
+                        <option value="4">Chest Piece</option>
+                        <option value="5">Cloak</option>
+                        <option value="6">Gloves</option>
+                        <option value="7">Helmet</option>
+                        <option value="8">Ring</option>
+                        <option value="9">Shield</option>
+                        <option value="10">Weapon</option>
+                        <option value="11">Weapon Or Shield</option>
+                        <option value="12">Weapon And Shield</option>
+                        <option value="13">No Slot</option>
+                    </select>
+                </div>
+                <div class="searchButtonContainer" id='searchButtonContainer'>
+                    <button class="searchButton" id='searchButton'>Search</button>
+                </div>
+                
+                
+                
+            </div>
+            <div id="cards" class="cardGrid">
+            
+            </div>
         </div>
         
         <div id="sidebar" class="sidebar">
-            <button type="button" class="collapsible">Toggle Search Menu</button>
+            <!-- <button type="button" class="collapsible">Toggle Search Menu</button>
             <div id="searchDiv" class="search">
                 <div id = "searchInstructions">
                     To search for a card, type anything you want to search for (Keywords such as Flying, card names such as Cerberus, card type such as Creature, etc.) into the search bar and click search.
@@ -27,7 +131,6 @@
                     For more advanced search options, you can use Advanced Search.  Searching with a blank search bar (or reloading the page) will show all of the cards again.
                 </div>
                 <div class = searchBarsDiv>
-                    <!-- can add onkeyup="search()" to searchBar -->
                     <input class="searchBar" type="text" id="searchBar1" placeholder="Search for cards.."> 
                     <button class="searchButton" id='searchButton'>Search</button>
                     <div class = advancedSearchDiv>
@@ -41,6 +144,53 @@
                         <div id = "advancedSearchBarsDiv"></div>
                     </div>
                 </div>
+                Card Type: <br>
+                <select name="typeSelect" id="typeSelectDiv">
+                    <option value="-1">Any</option>
+                    <option value="1">Attack Spell</option>
+                    <option value="2">Creature</option>
+                    <option value="3">Conjuration</option>
+                    <option value="4">Enchantment</option>
+                    <option value="5">Equipment</option>
+                    <option value="6">Incantation</option>
+                </select>
+                <br> Magic School: <br>
+                <select name="schoolSelect" id="schoolSelectDiv">
+                    <option value="-1">Any</option>
+                    <option value="1">Air</option>
+                    <option value="2">Arcane</option>
+                    <option value="3">Dark</option>
+                    <option value="4">Earth</option>
+                    <option value="5">Fire</option>
+                    <option value="6">Holy</option>
+                    <option value="7">Mind</option>
+                    <option value="8">Nature</option>
+                    <option value="9">War</option>
+                    <option value="10">Water</option>
+                </select>
+                <br> Action: <br>
+                <select name="actionSelect" id="actionSelectDiv">
+                    <option value="-1">Any</option>
+                    <option value="2">Full</option>
+                    <option value="1">Quick</option>
+                </select>
+                <br> Equipment Slot: <br>
+                <select name="slotSelect" id="slotSelectDiv">
+                    <option value="-1">Any</option>
+                    <option value="1">Amulet</option>
+                    <option value="2">Belt</option>
+                    <option value="3">Boots</option>
+                    <option value="4">Chest Piece</option>
+                    <option value="5">Cloak</option>
+                    <option value="6">Gloves</option>
+                    <option value="7">Helmet</option>
+                    <option value="8">Ring</option>
+                    <option value="9">Shield</option>
+                    <option value="10">Weapon</option>
+                    <option value="11">Weapon Or Shield</option>
+                    <option value="12">Weapon And Shield</option>
+                    <option value="13">No Slot</option>
+                </select>
                 <div id = radioDiv>
                     <div id = typeRadiosDiv>
                         Card Type: <br>
@@ -125,8 +275,8 @@
                         <label for="noSlotRadio" class="searchRadioLabel"> No Slot</label><br><br><br>
                     </div>
                 </div>
-            </div>
-            <button type="button" class="collapsible">Toggle Deckbuilding Menu</button>
+            </div> -->
+            <!-- <button type="button" class="collapsible">Toggle Deckbuilding Menu</button> -->
             <div id="deckBuildingDiv" class="deckBuilding">
                 <div id="decklistExplanationDiv" class="decklistExplanation">
                     This is the menu for creating and editing a deck.  Clicking on any card on the right adds it to the deck if there are not already the maximum possible copies in the deck.
@@ -138,6 +288,7 @@
                     For example, Arc Lightning is a Level 1 Air spell, so it costs 2 spell points.  Fireball is a level 2 Fire spell, so it costs 6 spell points.  Regrowth Belt is a level 1 Nature spell, so it costs 1 spell point.
                 </div>
                 <br>
+                Current Mage:
                 <select name="mageSelect" id="mageSelect">
                     <option value="Beastmaster">Beastmaster</option>
                     <option value="Warlord">Warlord</option>
@@ -162,8 +313,6 @@
             </div>
         </div>
         
-        <div id="cards" class="cardGrid">
-            
-        </div>
+        
     </body>
 </html>

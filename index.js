@@ -1472,11 +1472,17 @@ var currentDeckCost = 0;
 
 const tempTest = document.getElementById("temptest");
 const searchButton = document.getElementById("searchButton");
-const advancedSearchButton = document.getElementById("advancedSearchButton");
-const advancedSearchBars = document.getElementById("advancedSearchBarsDiv");
+// const advancedSearchButton = document.getElementById("advancedSearchButton");
+// const advancedSearchBars = document.getElementById("advancedSearchBarsDiv");
 const cardGrid = document.getElementById("cards");
 const searchBar1 = document.getElementById("searchBar1");
-const checkBoxes = document.getElementById("checkBoxesDiv");
+const searchBar2 = document.getElementById("searchBar2");
+const searchBar3 = document.getElementById("searchBar3");
+// const checkBoxes = document.getElementById("checkBoxesDiv");
+const typeSelect = document.getElementById("typeSelectDiv");
+const schoolSelect = document.getElementById("schoolSelectDiv");
+const actionSelect = document.getElementById("actionSelectDiv");
+const slotSelect = document.getElementById("slotSelectDiv");
 const mageSelect = document.getElementById("mageSelect");
 const deckBuilding = document.getElementById("deckBuildingDiv");
 const deckCost = document.getElementById("deckCostDiv");
@@ -1505,32 +1511,32 @@ const DamageBarrierImage = "Images/DamageBarrier.png";
 const CastRangeImage = "Images/CastRange.png";
 const ManaCostImage = "Images/ManaCost.png";
 
-var advancedSearchEnabled = false;
-var searchBar2;
-var searchBar3;
-var coll = document.getElementsByClassName("collapsible");
+// var advancedSearchEnabled = false;
+// var searchBar2;
+// var searchBar3;
+// var coll = document.getElementsByClassName("collapsible");
 var cardDivs = document.getElementsByClassName("card");
 var currentMage = mages[0];
 
 async function main() {
     searchButton.addEventListener('click', function(){updateCardGrid()});
-    advancedSearchButton.addEventListener('click', function(){toggleAdvancedSearch()});
+    // advancedSearchButton.addEventListener('click', function(){toggleAdvancedSearch()});
     mageSelect.addEventListener('change', function(){updateSelectedMage()});
     updateCardGrid();
     // generateCheckBoxes();
 
-    for (let i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            content.style.transition = "max-height 0.2s ease-out";
-            if (content.style.maxHeight){
-            content.style.maxHeight = null;
-            } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            } 
-        });
-    }
+    // for (let i = 0; i < coll.length; i++) {
+    //     coll[i].addEventListener("click", function() {
+    //         this.classList.toggle("active");
+    //         var content = this.nextElementSibling;
+    //         content.style.transition = "max-height 0.2s ease-out";
+    //         if (content.style.maxHeight){
+    //         content.style.maxHeight = null;
+    //         } else {
+    //         content.style.maxHeight = content.scrollHeight + "px";
+    //         } 
+    //     });
+    // }
     // for (let i = 0; i < cardDivs.length; i++) {      //done in updateCardGrid
     //     cardDivs[i].addEventListener("click", function() {
     //         currentDecklist[i] = currentDecklist[i] + 1;
@@ -1570,13 +1576,33 @@ function updateDecklist() {
     decklist.innerHTML = "";
     for (let i = 0; i < currentDecklist.length; i++) {
         if (currentDecklist[i] > 0) {
+            var decklistCardContainer = document.createElement('div');
+            var currentCardType = typeText(cards[i]);
+            decklistCardContainer.className = "decklistCardContainer " + "decklist" + currentCardType;
+
+            var tooltipContainer = document.createElement('div');
+            tooltipContainer.className = "tooltipRight";
+            decklistCardContainer.appendChild(tooltipContainer)
+
             var currentCardName = Name(cards[i]);
             var decklistCardDiv = document.createElement('div');
             decklistCardDiv.className = "decklistCard";
-            decklistCardDiv.textContent = currentCardName + " * " + currentDecklist[i];
-            decklist.appendChild(decklistCardDiv);
+            decklistCardDiv.textContent = currentDecklist[i] + "x " + currentCardName;
+            tooltipContainer.appendChild(decklistCardDiv);
 
-            decklistCardDiv.addEventListener("click", function() {
+            var cardCost = getCardSpellpointCost(cards[i], currentMage) * currentDecklist[i];
+            var decklistCardCostDiv = document.createElement('div');
+            decklistCardCostDiv.className = "decklistCardCost";
+            decklistCardCostDiv.textContent = "(" + cardCost + ")";
+            tooltipContainer.appendChild(decklistCardCostDiv);
+
+            var tooltip = document.createElement('span');
+            tooltip.className = "tooltipTextRight";
+            tooltip.appendChild(generateDiv(cards[i]));
+            tooltipContainer.appendChild(tooltip);
+
+            decklist.appendChild(decklistCardContainer);
+            decklistCardContainer.addEventListener("click", function() {
                 currentDecklist[i] = currentDecklist[i] - 1;
                 updateDecklist();
                 updateDeckCost();
@@ -1603,31 +1629,31 @@ function updateSelectedMage() {
 }
 
 
-function toggleAdvancedSearch() {
-    if (advancedSearchEnabled === false) {
-        advancedSearchEnabled = true;
-    } else {
-        advancedSearchEnabled = false;
-    }
-    if (advancedSearchEnabled === false) {
-        advancedSearchBars.innerHTML = "";
-    } else {
-        var secondBarDiv = document.createElement('input');
-        secondBarDiv.className = "searchBar";
-        secondBarDiv.id = "searchBar2";
-        secondBarDiv.type = "text";
-        secondBarDiv.placeholder = "Search for cards..";
-        advancedSearchBars.appendChild(secondBarDiv);
-        var thirdBarDiv = document.createElement('input');
-        thirdBarDiv.className = "searchBar";
-        thirdBarDiv.id = "searchBar3";
-        thirdBarDiv.type = "text";
-        thirdBarDiv.placeholder = "Search for cards..";
-        advancedSearchBars.appendChild(thirdBarDiv);
-        searchBar2 = document.getElementById("searchBar2");
-        searchBar3 = document.getElementById("searchBar3");
-    }
-}
+// function toggleAdvancedSearch() {
+//     if (advancedSearchEnabled === false) {
+//         advancedSearchEnabled = true;
+//     } else {
+//         advancedSearchEnabled = false;
+//     }
+//     if (advancedSearchEnabled === false) {
+//         advancedSearchBars.innerHTML = "";
+//     } else {
+//         var secondBarDiv = document.createElement('input');
+//         secondBarDiv.className = "searchBar";
+//         secondBarDiv.id = "searchBar2";
+//         secondBarDiv.type = "text";
+//         secondBarDiv.placeholder = "Search for cards..";
+//         advancedSearchBars.appendChild(secondBarDiv);
+//         var thirdBarDiv = document.createElement('input');
+//         thirdBarDiv.className = "searchBar";
+//         thirdBarDiv.id = "searchBar3";
+//         thirdBarDiv.type = "text";
+//         thirdBarDiv.placeholder = "Search for cards..";
+//         advancedSearchBars.appendChild(thirdBarDiv);
+//         searchBar2 = document.getElementById("searchBar2");
+//         searchBar3 = document.getElementById("searchBar3");
+//     }
+// }
 
 function updateCardGrid() {
     cardGrid.innerHTML = "";
@@ -1635,7 +1661,7 @@ function updateCardGrid() {
     foundCards = cards;
     tempCards = [];
 
-    typeBubble = Number(document.querySelector('input[name="typeRadio"]:checked').value);
+    typeBubble = Number(typeSelect.value);
     if (typeBubble !== TYPE) {
         for (let i = 0; i < foundCards.length; i++) {
             if (type(foundCards[i]) === typeBubble) {
@@ -1646,7 +1672,7 @@ function updateCardGrid() {
     } 
 
     tempCards = [];
-    schoolBubble = Number(document.querySelector('input[name="schoolRadio"]:checked').value);
+    schoolBubble = Number(schoolSelect.value);
     if (schoolBubble !== SCHOOL) {
         for (let i = 0; i < foundCards.length; i++) {
             cardLevel = level(foundCards[i]);
@@ -1664,7 +1690,7 @@ function updateCardGrid() {
     }
 
     tempCards = [];
-    actionBubble = Number(document.querySelector('input[name="actionRadio"]:checked').value);
+    actionBubble = Number(actionSelect.value);
     if (actionBubble !== ACTION) {
         for (let i = 0; i < foundCards.length; i++) {
             if (action(foundCards[i]) === actionBubble) {
@@ -1675,7 +1701,7 @@ function updateCardGrid() {
     }
 
     tempCards = [];
-    slotBubble = Number(document.querySelector('input[name="slotRadio"]:checked').value);
+    slotBubble = Number(slotSelect.value);
     if (slotBubble !== SLOT) {
         for (let i = 0; i < foundCards.length; i++) {
             if (equipSlot(foundCards[i]) === slotBubble) {
@@ -1703,43 +1729,77 @@ function updateCardGrid() {
         foundCards = tempCards;
     }
 
-    if (advancedSearchEnabled === true) {
-        tempCards = [];
-        query2 = (searchBar2.value).toLowerCase();
-        if (query2 !== "") {
-            queryConditions2 = query2.split(",");
-            for (let i = 0; i < queryConditions2.length; i++) {
-                queryConditions2[i] = queryConditions2[i].trim();
-            }
-            for (let i = 0; i < foundCards.length; i++) {
-                for (let j = 0; j < queryConditions2.length; j++) {
-                    if (fullText(foundCards[i]).toLowerCase().includes(queryConditions2[j])) {
-                        tempCards.push(foundCards[i]);
-                        j = queryConditions2.length;
-                    }
+    query = (searchBar2.value).toLowerCase();
+    if (query !== "") {
+        queryConditions1 = query.split(",");
+        for (let i = 0; i < queryConditions1.length; i++) {
+            queryConditions1[i] = queryConditions1[i].trim();
+        }
+        for (let i = 0; i < foundCards.length; i++) {
+            for (let j = 0; j < queryConditions1.length; j++) {
+                if (fullText(foundCards[i]).toLowerCase().includes(queryConditions1[j])) {
+                    tempCards.push(foundCards[i]);
+                    j = queryConditions1.length;
                 }
             }
-            foundCards = tempCards;
         }
-
-        tempCards = [];
-        query3 = (searchBar3.value).toLowerCase();
-        if (query3 !== "") {
-            queryConditions3 = query3.split(",");
-            for (let i = 0; i < queryConditions3.length; i++) {
-                queryConditions3[i] = queryConditions3[i].trim();
-            }
-            for (let i = 0; i < foundCards.length; i++) {
-                for (let j = 0; j < queryConditions3.length; j++) {
-                    if (fullText(foundCards[i]).toLowerCase().includes(queryConditions3[j])) {
-                        tempCards.push(foundCards[i]);
-                        j = queryConditions3.length;
-                    }
-                }
-            }
-            foundCards = tempCards;
-        }
+        foundCards = tempCards;
     }
+
+    query = (searchBar3.value).toLowerCase();
+    if (query !== "") {
+        queryConditions1 = query.split(",");
+        for (let i = 0; i < queryConditions1.length; i++) {
+            queryConditions1[i] = queryConditions1[i].trim();
+        }
+        for (let i = 0; i < foundCards.length; i++) {
+            for (let j = 0; j < queryConditions1.length; j++) {
+                if (fullText(foundCards[i]).toLowerCase().includes(queryConditions1[j])) {
+                    tempCards.push(foundCards[i]);
+                    j = queryConditions1.length;
+                }
+            }
+        }
+        foundCards = tempCards;
+    }
+
+    // if (advancedSearchEnabled === true) {
+    //     tempCards = [];
+    //     query2 = (searchBar2.value).toLowerCase();
+    //     if (query2 !== "") {
+    //         queryConditions2 = query2.split(",");
+    //         for (let i = 0; i < queryConditions2.length; i++) {
+    //             queryConditions2[i] = queryConditions2[i].trim();
+    //         }
+    //         for (let i = 0; i < foundCards.length; i++) {
+    //             for (let j = 0; j < queryConditions2.length; j++) {
+    //                 if (fullText(foundCards[i]).toLowerCase().includes(queryConditions2[j])) {
+    //                     tempCards.push(foundCards[i]);
+    //                     j = queryConditions2.length;
+    //                 }
+    //             }
+    //         }
+    //         foundCards = tempCards;
+    //     }
+
+    //     tempCards = [];
+    //     query3 = (searchBar3.value).toLowerCase();
+    //     if (query3 !== "") {
+    //         queryConditions3 = query3.split(",");
+    //         for (let i = 0; i < queryConditions3.length; i++) {
+    //             queryConditions3[i] = queryConditions3[i].trim();
+    //         }
+    //         for (let i = 0; i < foundCards.length; i++) {
+    //             for (let j = 0; j < queryConditions3.length; j++) {
+    //                 if (fullText(foundCards[i]).toLowerCase().includes(queryConditions3[j])) {
+    //                     tempCards.push(foundCards[i]);
+    //                     j = queryConditions3.length;
+    //                 }
+    //             }
+    //         }
+    //         foundCards = tempCards;
+    //     }
+    // }
     for (let i = 0; i < foundCards.length; i++) {
         addCardToGrid(foundCards[i]);
     }
@@ -1882,7 +1942,7 @@ function cardMeetsCondition(card, index1, index2, index3, index4, value1, value2
 
 }
 
-function addCardToGrid(card) {
+function generateDiv(card) {
     var cardDiv = document.createElement('div');
     //cardDiv.id = 'block';
     if (type(card) === AttackSpell) {
@@ -1898,7 +1958,7 @@ function addCardToGrid(card) {
     } else if (type(card) === Incantation) {
         cardDiv.className = 'cardIncantation card';
     }
-    cardGrid.appendChild(cardDiv);
+    
 
     var topBarDiv = document.createElement('div');
     topBarDiv.className = "topBar";
@@ -2304,6 +2364,11 @@ function addCardToGrid(card) {
     }
     textDiv.innerHTML = currentOtherText;
     bottomDiv.appendChild(textDiv);
+    return cardDiv;
+}
+
+function addCardToGrid(card) {
+    cardGrid.appendChild(generateDiv(card));
 }
 
 function updateTempTest() {

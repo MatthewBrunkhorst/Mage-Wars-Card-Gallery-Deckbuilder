@@ -1,39 +1,10 @@
-//Data Set is not super large nor is it likely to ever update, so I have it hardcoded.
+//Constants (mostly used to simplify and standardize cards)
 
-/*List of cards that exist
-Relevant information:
-    Broad (all cards): Name, Text, Type, Subtype(s), Casting Cost, Speed (Quick/Full action), Range, Target, Level(s) (i.e. "1 fire and 1 nature" or "1 fire or 1 nature"),
-        Keywords (i.e. melee +x), Attack Info, Defense Info
-    Info for each attack: Name, Speed, Ranged/Melee/Zone, Range, Damage Type, Number of Die, Effect Roll, Keywords (Ethereal, +2 vs Flying)
-    Info for each defense: Roll needed, number of uses, works vs melee, works vs ranged, other specifications
-    Enchantments: Reveal Cost
-    Equipment: Equipment Slot
-    Creature: Armor, Life
-
-Format: (USE "NONE" WHEN NO VALUE APPLIES FOR STRINGS and -1 FOR INTEGERS (i.e. subtype 4 on all cards, equipment slot when not equipment, etc.) BUT ALWAYS PUT EVERY ARRAY THAT EXISTS (i.e. a card with no subtype should still have a subtype array with 4 NONEs in it rather than a NONE in place of an array))
-[Name, Type, [Subtype 1, Subtype 2, Subtype 3, Subtype 4], Casting Cost, Reveal Cost (Use -1 for non-enchantments), Speed, Min Range, Max Range, Target, 
-[Total Level, Level Part 1, Level Part 2, Level Part 3, Level Part 4], [Keyword 1, Keyword 2, ..., Keyword 12], [Attack Info 1, Attack Info 2, Attack Info 3, Attack Info 4],
-[Defense Info 1, Defense Info 2], Equipment Slot, Armor, Life]
-
-Format for Subarrays:
-Level Part: [Number of levels in part, type 1, type 2, type 3, type 4, type 5] - AND types have multiple level parts, OR types are in one part
-ex. The level array for a card that is level 3 fire, level 1 earth, and level 1 in either arcane or nature would look like [5, [3, FIRE, NONE, NONE, NONE, NONE], [1, EARTH, NONE, NONE, NONE, NONE], [1, ARCANE, NATURE, NONE, NONE, NONE], [0, NONE, NONE, NONE, NONE, NONE]]
-
-Attack Info: [Name, Speed, Ranged/Melee/Zone, Min Range, Max Range, Damage Type, Number of Die, Effect Roll, Text]
-Effect Roll: [[Effect Roll Minimum for Effect 1 (USE -1 for NONE), Effect 1], ..., [Effect Roll Minimum for Effect 4, Effect 4]]
-
-Defense Info: [Roll Needed, Num Uses, Works VS Melee/Ranged/All, Text]
-
-example card: asto vidatu, angel slayer:
-["Asto Vidatu, Angel Slayer", "Creature", ["Manticore", "NONE", "NONE", "NONE"], 20, -1, "FULL", 0, 0, "Zone", [5, [3, "Arcane", "NONE", "NONE", "NONE", "NONE"], [2, "Dark", "NONE", "NONE", "NONE", "NONE"], [0, "NONE", "NONE", "NONE", "NONE", "NONE"], [0, "NONE", "NONE", "NONE", "NONE", "NONE"]], ["Cripple", "Piercing +X", "Weak", "Flying", "Legendary", "Tough -X", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"], ["Claws", "Quick", "Melee", 0, 0, "Physical", 5, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["Toxic Spines", "Full", "Ranged", 0, 1, "Physical", 2, [8, "Cripple"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "Piercing +1"], ["Poison Stinger", "Full", "Melee", 0, 0, "Physical", 2, [5, "Weak"], [9, "2 Weak"], [-1, "NONE"], [-1, "NONE"], "Piercing +1"], ["NONE", "NONE", "NONE", -1, -1, "NONE", -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], [[-1, -1, "NONE", "NONE"], [-1, -1, "NONE", "NONE"]], "NONE", 2, 14]
-
-
-Blank template:
-["NAME", TYPE, ["NONE", "NONE", "NONE", "NONE"], COST, -1, ACTION, 0, 0, "TARGET", [-1, [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL]], [KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], [[-1, -1, MELEERANGEDZONETRAMPLEANY, "NONE"], [-1, -1, MELEERANGEDZONETRAMPLEANY, "NONE"]], SLOT, -1, -1]
-*/
+//Used in place of just -1 to make inapplicable values more obvious in code
 const NONE = -1
 const COST = -1
 
+//Used to represent card type
 const TYPE = -1
 const AttackSpell = 1
 const Creature = 2
@@ -42,11 +13,13 @@ const Enchantment = 4
 const Equipment = 5
 const Incantation = 6
 
+//Used to represent action type
 const ACTION = -1
 const Quick = 1
 const Full = 2
 const NoAction = 3
 
+//Used to represent magic school
 const SCHOOL = -1
 const Air = 1
 const Arcane = 2
@@ -59,6 +32,7 @@ const Nature = 8
 const War = 9
 const Water = 10
 
+//Used to represent equipment slot
 const SLOT = -1
 const Amulet = 1
 const Belt = 2
@@ -74,6 +48,7 @@ const WeaponOrShield = 11
 const WeaponAndShield = 12
 const NoSlot = 13
 
+//Used to represent damage type
 const DamageType = -1
 const Typeless = 1
 const Acid = 2
@@ -86,6 +61,7 @@ const Psychic = 8
 const Wind = 9
 const NoDamage = 10
 
+//Used to represent damage type
 const MELEERANGEDZONETRAMPLEANY = -1 //Use for both attacks and defenses (category for attack, valid attacks to defend against for defenses)
 const Melee = 1
 const Ranged = 2
@@ -98,10 +74,12 @@ const NonAttackRanged = 8
 const NonAttackZone = 9
 const Any = 10
 
+//Used to represent whether something is a training or opposing condition for a mage
 const TRAINEDOPPOSED = -1
 const Trained = 1
 const Opposed = 2
 
+//List of keywords
 //This section largely generated by Python code fed list of keywords, tuned to make keywords look better - I added all the spaces in the strings individually
 Keywords = []
 Keywords.length = 200
@@ -515,7 +493,8 @@ const ZoneAttack = 197
 Keywords[ZoneAttack] = "Zone Attack"
 const ZoneAction = 198
 Keywords[ZoneAction] = "Zone Action"
-const CantHaveArmor = 199
+//Some keywords added to end when I realized I missed them
+const CantHaveArmor = 199  
 Keywords[CantHaveArmor] = "Can't Have Armor"
 const Anchored = 200
 Keywords[Anchored] = "Anchored"
@@ -531,20 +510,22 @@ Keywords[AcidImmune] = "Acid Immunity"
 
 
 
-/*List of cards that exist
+/*List of cards
+
 Relevant information:
-    Broad (all cards): Name, Text, Type, Subtype(s), Casting Cost, Speed (Quick/Full action), Range, Target, Level(s) (i.e. "1 fire and 1 nature" or "1 fire or 1 nature"),
-        Keywords (i.e. melee +x), Attack Info, Defense Info
-    Info for each attack: Name, Speed, Ranged/Melee/Zone, Range, Damage Type, Number of Die, Effect Roll, Keywords (Ethereal, +2 vs Flying)
-    Info for each defense: Roll needed, number of uses, works vs melee, works vs ranged, other specifications
-    Enchantments: Reveal Cost
-    Equipment: Equipment Slot
-    Creature: Armor, Life
+    Name, Type, Subtype(s), Casting Cost, Reveal Cost, Speed (Quick/Full action), Range, Target, Level(s) (i.e. "1 fire and 1 nature" or "1 fire or 1 nature"),
+    Keywords (i.e. melee +x), Attack Info, Defense Info, Equipment Slot, Armor, Life, Card Text
+
+    Info for each attack: Name, Speed, Ranged/Melee/Zone, Range, Damage Type, Number of Die, Effect Roll, Keywords (Ethereal, +2 vs Flying), Attack Text
+
+    Info for each defense: Roll needed, Number of uses, Works vs melee, Works vs ranged, Defense Text
+
+    
 
 Format: (USE "NONE" WHEN NO VALUE APPLIES FOR STRINGS and -1 FOR INTEGERS (i.e. subtype 4 on all cards, equipment slot when not equipment, etc.) BUT ALWAYS PUT EVERY ARRAY THAT EXISTS (i.e. a card with no subtype should still have a subtype array with 4 NONEs in it rather than a NONE in place of an array))
 [Name, Type, [Subtype 1, Subtype 2, Subtype 3, Subtype 4], Casting Cost, Reveal Cost (Use -1 for non-enchantments), Speed, Min Range, Max Range, Target, 
-[Total Level, Level Part 1, Level Part 2, Level Part 3, Level Part 4], [Keyword 1, Keyword 2, ..., Keyword 12], [Attack Info 1, Attack Info 2, Attack Info 3, Attack Info 4],
-[Defense Info 1, Defense Info 2], Equipment Slot, Armor, Life, OtherText]
+[Total Level, Level Part 1, Level Part 2, Level Part 3, Level Part 4], [Keyword 1, Keyword 2, ..., Keyword 15], [Attack Info 1, Attack Info 2, Attack Info 3, Attack Info 4],
+[Defense Info 1, Defense Info 2], Equipment Slot, Armor, Life, Other Card Text]
 
 Format for Subarrays:
 Level Part: [Number of levels in part, type 1, type 2, type 3, type 4, type 5] - AND types have multiple level parts, OR types are in one part
@@ -556,18 +537,22 @@ Effect Roll: [[Effect Roll Minimum for Effect 1 (USE -1 for NONE), Effect 1], ..
 Defense Info: [Roll Needed, Num Uses, Works VS Melee/Ranged/All, Text]
 
 example card: asto vidatu, angel slayer:
-["Asto Vidatu, Angel Slayer", Creature, ["Manticore", "NONE", "NONE", "NONE"], 20, -1, Full, 0, 0, "Zone", [5, [3, "Arcane", "NONE", "NONE", "NONE", "NONE"], [2, "Dark", "NONE", "NONE", "NONE", "NONE"], [0, "NONE", "NONE", "NONE", "NONE", "NONE"], [0, "NONE", "NONE", "NONE", "NONE", "NONE"]], ["Cripple", "Piercing +X", "Weak", "Flying", "Legendary", "Tough -X", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"], ["Claws", "Quick", "Melee", 0, 0, "Physical", 5, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["Toxic Spines", "Full", "Ranged", 0, 1, "Physical", 2, [8, "Cripple"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "Piercing +1"], ["Poison Stinger", "Full", "Melee", 0, 0, "Physical", 2, [5, "Weak"], [9, "2 Weak"], [-1, "NONE"], [-1, "NONE"], "Piercing +1"], ["NONE", "NONE", "NONE", -1, -1, "NONE", -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], [[-1, -1, "NONE", "NONE"], [-1, -1, "NONE", "NONE"]], "NONE", 2, 14]
+["Sersiryx, Imp Familiar", Creature, ["Demon", "NONE", "NONE", "NONE"], 12, -1, Full, 0, 0, "Zone", [3, [3, Dark, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart], [MeleeAttack, Channeling, Burn, Condition, FlameDamage, Defrost, Familiar, FlameMinusX, Legendary, WarlockOnly, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD], [["Singe", Quick, Melee, 0, 0, Flame, 2, [7, "Burn"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "Defrost"], BlankAttack, BlankAttack, BlankAttack], BlankDefenses, SLOT, 2, 9, "Channeling 1 * Familiar * Flame -2 * Legendary * Warlock Only.  Sersiryx can cast only Level 1-2 Fire attack spells, or Level 1-2 curse enchantments."],                                                                                                      
 
 
 Blank template:
 ["NAME", TYPE, ["NONE", "NONE", "NONE", "NONE"], COST, -1, ACTION, 0, 0, "TARGET", [-1, [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL], [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL]], [KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD, KEYWORD], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"], [[-1, -1, MELEERANGEDZONETRAMPLEANY, "NONE"], [-1, -1, MELEERANGEDZONETRAMPLEANY, "NONE"]], SLOT, -1, -1]
 */
+
+//Constants to simplify frequently unused sections of cards
 const BlankLevelPart = [0, SCHOOL, SCHOOL, SCHOOL, SCHOOL, SCHOOL];
 const BlankAttack = ["NONE", ACTION, MELEERANGEDZONETRAMPLEANY, -1, -1, DamageType, -1, [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], [-1, "NONE"], "NONE"];
 const BlankAttacks = [BlankAttack, BlankAttack, BlankAttack, BlankAttack];
 const BlankDefense = [-1, -1, MELEERANGEDZONETRAMPLEANY, "NONE"];
 const BlankDefenses = [BlankDefense, BlankDefense];
 const BlankSubtype = ["NONE", "NONE", "NONE", "NONE"];
+
+//List of cards
 const cards = [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
     //Attack Spells:
     //Air Primary:
@@ -874,15 +859,91 @@ Effect Roll: [[Effect Roll Minimum for Effect 1 (USE -1 for NONE), Effect 1], ..
 Ability Info: [Name, Text]
 */
 
+//Blank trainin array for unnecessary training/opposed condition sets
 const BlankTraining = [SCHOOL, false, TYPE, "NONE", -1];
 
+//List of mages
 const mages = [
     ["Beastmaster", BeastmasterOnly, [[Nature, false, TYPE, "NONE", -1], BlankTraining, BlankTraining, BlankTraining], [[Fire, false, TYPE, "NONE", -1], BlankTraining, BlankTraining, BlankTraining], 120, 9, "Straywood Forest", Creature, ["Wood Elf", "NONE", "NONE", "NONE"], [["Basic Melee Attack", Quick, Melee,  0, 0, Typeless, 3, [-1, "NONE"],   [-1, "NONE"],   [-1, "NONE"], [-1, "NONE"], "NONE"], BlankAttack, BlankAttack, BlankAttack], 0, 36, [["Quick Summoning", "Once per round, the Beastmaster may summon a Level 1 animal creature spell as a quick spell."], ["PET", "When a friendly non-Legendary animal creature comes into play, you may make it your Pet. Pay mana equal to the creature's Level +1, then place the Pet marker on it. Pet gains Melee +1, Armor +1, and Life +3. Whenever Pet is in the same zone as his Beastmaster, it gains an additional Melee +1. If Pet is destroyed, you may assign the marker again in the same manner when a new animal is summoned."], ["Battle Skill", "Beastmaster has the Melee +1 trait."], ["NONE", "NONE"]]],
     ["Warlord", WarlordOnly, [[War, false, TYPE, "NONE", -1], [Earth, false, TYPE, "NONE", -1], BlankTraining, BlankTraining], [[Arcane, false, TYPE, "NONE", -1], BlankTraining, BlankTraining, BlankTraining], 120, 9, "Anvil Throne", Creature, ["Dwarf", "NONE", "NONE", "NONE"], [["Basic Melee Attack", Quick, Melee,  0, 0, Typeless, 3, [-1, "NONE"],   [-1, "NONE"],   [-1, "NONE"], [-1, "NONE"], "NONE"], BlankAttack, BlankAttack, BlankAttack], 0, 34, [["Runesmithing", "When an equipment comes into play attached to this mage, he may pay 1 mana to assign one Rune to it. If this equipment would be destroyed by a spell or ability an opponent controls, prevent that destruction unless that opponent pays 2 mana. Each Rune may only be assigned once per game."], ["Battle Orders", "Once per round, the Warlord may pay 1 mana and cast one of the following quick command spells. The chosen spell affects all friendly soldier creatures in his zone at the time it is cast, and the effect lasts until the end of the round. Take Aim! - Ranged attacks gain Piercing +2; Quick March! - Gain Fast trait; Hold The Line! - Gain Armor +1 and Tough -2 trait."], ["Battle Hardened", "Warlord has the Tough -2 trait."], ["NONE", "NONE"]]]
 
 ]
 
+//Getters for all the key values of cards
+function Name(card) {
+    return card[0];
+}
 
+function type(card) {
+    return card[1];
+}
+
+function subType(card) {
+    return card[2];
+}
+
+function cost(card) {
+    return card[3];
+}
+
+function revealCost(card) {
+    return card[4];
+}
+
+function action(card) {
+    return card[5];
+}
+
+function minRange(card) {
+    return card[6];
+}
+
+function maxRange(card) {
+    return card[7];
+}
+
+function target(card) {
+    return card[8];
+}
+
+function level(card) {
+    return card[9];
+}
+
+function keyword(card) {
+    return card[10];
+}
+
+function attacks(card) {
+    return card[11];
+}
+
+function attackIndex(card, index) {
+    return card[11][index];
+}
+
+function defenses(card) {
+    return card[12];
+}
+
+function equipSlot(card) {
+    return card[13];
+}
+
+function armor(card) {
+    return card[14];
+}
+
+function life(card) {
+    return card[15];
+}
+
+function otherText(card) {
+    return card[16];
+}
+
+
+//Getters for all of the key info of cards that return the value in text form
 function nameText(card) {
     return Name(card);
 }
@@ -1342,6 +1403,8 @@ function otherTextText(card) {
     return cardOtherText;
 }
 
+
+//Function to generate full text for a card for search purposes (i.e. if a user searches for something in the searchbar, the output of this function is what is actually searched through)
 function fullText(card) {
     var text = nameText(card);
     text += " " + typeText(card);
@@ -1391,94 +1454,25 @@ function fullText(card) {
     return text;
 }
 
-function Name(card) {
-    return card[0];
-}
-
-function type(card) {
-    return card[1];
-}
-
-function subType(card) {
-    return card[2];
-}
-
-function cost(card) {
-    return card[3];
-}
-
-function revealCost(card) {
-    return card[4];
-}
-
-function action(card) {
-    return card[5];
-}
-
-function minRange(card) {
-    return card[6];
-}
-
-function maxRange(card) {
-    return card[7];
-}
-
-function target(card) {
-    return card[8];
-}
-
-function level(card) {
-    return card[9];
-}
-
-function keyword(card) {
-    return card[10];
-}
-
-function attacks(card) {
-    return card[11];
-}
-
-function attackIndex(card, index) {
-    return card[11][index];
-}
-
-function defenses(card) {
-    return card[12];
-}
-
-function equipSlot(card) {
-    return card[13];
-}
-
-function armor(card) {
-    return card[14];
-}
-
-function life(card) {
-    return card[15];
-}
-
-function otherText(card) {
-    return card[16];
-}
-
-var currentDecklist = []; //Stores quantity of each card in currently built deck - starts as array of zeroes that is as long as cards array
+//Stores quantity of each card in currently built deck - starts as array of zeroes that is as long as cards array
+var currentDecklist = []; 
+//Initializes currentDecklist to say it has 0 of every card
 for (let i = 0; i < cards.length; i++) {
     currentDecklist.push(0)
 }
+
+//Stores current spellpoint cost of deck
 var currentDeckCost = 0;
 
+//Stores the currently selected mage
+var currentMage = mages[0];
 
-const tempTest = document.getElementById("temptest");
+//References to relevant HTML elements
 const searchButton = document.getElementById("searchButton");
-// const advancedSearchButton = document.getElementById("advancedSearchButton");
-// const advancedSearchBars = document.getElementById("advancedSearchBarsDiv");
 const cardGrid = document.getElementById("cards");
 const searchBar1 = document.getElementById("searchBar1");
 const searchBar2 = document.getElementById("searchBar2");
 const searchBar3 = document.getElementById("searchBar3");
-// const checkBoxes = document.getElementById("checkBoxesDiv");
 const typeSelect = document.getElementById("typeSelectDiv");
 const schoolSelect = document.getElementById("schoolSelectDiv");
 const actionSelect = document.getElementById("actionSelectDiv");
@@ -1487,7 +1481,9 @@ const mageSelect = document.getElementById("mageSelect");
 const deckBuilding = document.getElementById("deckBuildingDiv");
 const deckCost = document.getElementById("deckCostDiv");
 const decklist = document.getElementById("decklistDiv");
+var cardDivs = document.getElementsByClassName("card");
 
+//Image files used in cards
 const FullActionImage = "Images/FullAction.png";
 const QuickActionImage = "Images/QuickAction.png";
 
@@ -1511,56 +1507,20 @@ const DamageBarrierImage = "Images/DamageBarrier.png";
 const CastRangeImage = "Images/CastRange.png";
 const ManaCostImage = "Images/ManaCost.png";
 
-// var advancedSearchEnabled = false;
-// var searchBar2;
-// var searchBar3;
-// var coll = document.getElementsByClassName("collapsible");
-var cardDivs = document.getElementsByClassName("card");
-var currentMage = mages[0];
 
-async function main() {
-    searchButton.addEventListener('click', function(){updateCardGrid()});
-    // advancedSearchButton.addEventListener('click', function(){toggleAdvancedSearch()});
+//Main function, run once when website loaded
+async function main() { 
+    //Sets up search button
+    searchButton.addEventListener('click', function(){updateCardGrid()}); 
+
+    //Sets up mage selection
     mageSelect.addEventListener('change', function(){updateSelectedMage()});
+
+    //Generates card grid
     updateCardGrid();
-    // generateCheckBoxes();
-
-    // for (let i = 0; i < coll.length; i++) {
-    //     coll[i].addEventListener("click", function() {
-    //         this.classList.toggle("active");
-    //         var content = this.nextElementSibling;
-    //         content.style.transition = "max-height 0.2s ease-out";
-    //         if (content.style.maxHeight){
-    //         content.style.maxHeight = null;
-    //         } else {
-    //         content.style.maxHeight = content.scrollHeight + "px";
-    //         } 
-    //     });
-    // }
-    // for (let i = 0; i < cardDivs.length; i++) {      //done in updateCardGrid
-    //     cardDivs[i].addEventListener("click", function() {
-    //         currentDecklist[i] = currentDecklist[i] + 1;
-    //         updateDeckCost();
-    //     });
-    // }
 }
 
-function generateCheckBoxes() {
-    var checkBoxDiv = document.createElement('input');
-    checkBoxDiv.className = "checkBox";
-    checkBoxDiv.id = "checkboxtest";
-    checkBoxDiv.type = "checkbox";
-    checkBoxDiv.name = "checkboxtest";
-    checkBoxDiv.value = "checkboxtest";
-    checkBoxes.appendChild(checkBoxDiv);
-    var checkBoxLabel = document.createElement('label');
-    checkBoxLabel.className = "checkBoxLabel";
-    checkBoxLabel.id = "checkboxlabel";
-    checkBoxLabel.htmlFor = "checkboxtest";
-    checkBoxLabel.innerHTML = " checkboxtest";
-    checkBoxes.appendChild(checkBoxLabel);
-}
-
+//Calculates cost of current decklist
 function updateDeckCost() {
     currentDeckCost = 0;
     for (let i = 0; i < currentDecklist.length; i++) {
@@ -1572,6 +1532,7 @@ function updateDeckCost() {
     deckCost.textContent = "Spell Point Cost of Current Deck: " + currentDeckCost;
 }
 
+//Updates decklist HTML
 function updateDecklist() {
     decklist.innerHTML = "";
     for (let i = 0; i < currentDecklist.length; i++) {
@@ -1581,7 +1542,7 @@ function updateDecklist() {
             decklistCardContainer.className = "decklistCardContainer " + "decklist" + currentCardType;
 
             var tooltipContainer = document.createElement('div');
-            tooltipContainer.className = "tooltipRight";
+            tooltipContainer.className = "tooltipCard";
             decklistCardContainer.appendChild(tooltipContainer)
 
             var currentCardName = Name(cards[i]);
@@ -1597,8 +1558,8 @@ function updateDecklist() {
             tooltipContainer.appendChild(decklistCardCostDiv);
 
             var tooltip = document.createElement('span');
-            tooltip.className = "tooltipTextRight";
-            tooltip.appendChild(generateDiv(cards[i]));
+            tooltip.className = "tooltipTextCard";
+            tooltip.appendChild(generateCardDiv(cards[i]));
             tooltipContainer.appendChild(tooltip);
 
             decklist.appendChild(decklistCardContainer);
@@ -1618,6 +1579,7 @@ function updateDecklist() {
 
 }
 
+//Updates current mage based on mageSelect
 function updateSelectedMage() {
     newMageName = mageSelect.value;
     for (let i = 0; i < mages.length; i++) {
@@ -1629,35 +1591,9 @@ function updateSelectedMage() {
 }
 
 
-// function toggleAdvancedSearch() {
-//     if (advancedSearchEnabled === false) {
-//         advancedSearchEnabled = true;
-//     } else {
-//         advancedSearchEnabled = false;
-//     }
-//     if (advancedSearchEnabled === false) {
-//         advancedSearchBars.innerHTML = "";
-//     } else {
-//         var secondBarDiv = document.createElement('input');
-//         secondBarDiv.className = "searchBar";
-//         secondBarDiv.id = "searchBar2";
-//         secondBarDiv.type = "text";
-//         secondBarDiv.placeholder = "Search for cards..";
-//         advancedSearchBars.appendChild(secondBarDiv);
-//         var thirdBarDiv = document.createElement('input');
-//         thirdBarDiv.className = "searchBar";
-//         thirdBarDiv.id = "searchBar3";
-//         thirdBarDiv.type = "text";
-//         thirdBarDiv.placeholder = "Search for cards..";
-//         advancedSearchBars.appendChild(thirdBarDiv);
-//         searchBar2 = document.getElementById("searchBar2");
-//         searchBar3 = document.getElementById("searchBar3");
-//     }
-// }
-
+//Puts HTML for all cards that should be shown based on current search criteria into card grid
 function updateCardGrid() {
     cardGrid.innerHTML = "";
-    updateTempTest();
     foundCards = cards;
     tempCards = [];
 
@@ -1763,43 +1699,6 @@ function updateCardGrid() {
         foundCards = tempCards;
     }
 
-    // if (advancedSearchEnabled === true) {
-    //     tempCards = [];
-    //     query2 = (searchBar2.value).toLowerCase();
-    //     if (query2 !== "") {
-    //         queryConditions2 = query2.split(",");
-    //         for (let i = 0; i < queryConditions2.length; i++) {
-    //             queryConditions2[i] = queryConditions2[i].trim();
-    //         }
-    //         for (let i = 0; i < foundCards.length; i++) {
-    //             for (let j = 0; j < queryConditions2.length; j++) {
-    //                 if (fullText(foundCards[i]).toLowerCase().includes(queryConditions2[j])) {
-    //                     tempCards.push(foundCards[i]);
-    //                     j = queryConditions2.length;
-    //                 }
-    //             }
-    //         }
-    //         foundCards = tempCards;
-    //     }
-
-    //     tempCards = [];
-    //     query3 = (searchBar3.value).toLowerCase();
-    //     if (query3 !== "") {
-    //         queryConditions3 = query3.split(",");
-    //         for (let i = 0; i < queryConditions3.length; i++) {
-    //             queryConditions3[i] = queryConditions3[i].trim();
-    //         }
-    //         for (let i = 0; i < foundCards.length; i++) {
-    //             for (let j = 0; j < queryConditions3.length; j++) {
-    //                 if (fullText(foundCards[i]).toLowerCase().includes(queryConditions3[j])) {
-    //                     tempCards.push(foundCards[i]);
-    //                     j = queryConditions3.length;
-    //                 }
-    //             }
-    //         }
-    //         foundCards = tempCards;
-    //     }
-    // }
     for (let i = 0; i < foundCards.length; i++) {
         addCardToGrid(foundCards[i]);
     }
@@ -1839,6 +1738,7 @@ function updateCardGrid() {
 // e.x. Forcemaster is trained in mind and would thus have an array for training of [Mind, Type, "NONE", -1, False].  Forcemaster is opposed to non-Mind creatures and would have an array for opposed of [Mind, Creature, "NONE", -1, True].
 // [1, [1, Air, SCHOOL, SCHOOL, SCHOOL, SCHOOL], BlankLevelPart, BlankLevelPart, BlankLevelPart]
 
+//Calculates spellpoint cost for a given card for a given mage
 function getCardSpellpointCost(card, mage) {
     var cardType = type(card);
     var cardSubtypes = subType(card);
@@ -1902,6 +1802,7 @@ function getCardSpellpointCost(card, mage) {
     return totalCost;
 }
 
+//Checks if a given card costs fewer spell points than normal for a given mage
 function isTrained(card, mage) {
     if (getCardSpellpointCost(card, mage) < level(card)[0]*2) {
         return true;
@@ -1909,6 +1810,7 @@ function isTrained(card, mage) {
     return false;
 }
 
+//Checks if a given card costs more spell points than normal for a given mage
 function isOpposed(card, mage) {
     if (getCardSpellpointCost(card, mage) > level(card)[0]*2) {
         return true;
@@ -1942,7 +1844,8 @@ function cardMeetsCondition(card, index1, index2, index3, index4, value1, value2
 
 }
 
-function generateDiv(card) {
+//Generates the HTML for a given card - consider splitting into multiple functions
+function generateCardDiv(card) { 
     var cardDiv = document.createElement('div');
     //cardDiv.id = 'block';
     if (type(card) === AttackSpell) {
@@ -2367,12 +2270,11 @@ function generateDiv(card) {
     return cardDiv;
 }
 
+
+//Actually puts a card onto the card grid
 function addCardToGrid(card) {
-    cardGrid.appendChild(generateDiv(card));
+    cardGrid.appendChild(generateCardDiv(card));
 }
 
-function updateTempTest() {
-    // tempTest.textContent=fullText(cards[1]);
-}
-
+//Run main
 main()

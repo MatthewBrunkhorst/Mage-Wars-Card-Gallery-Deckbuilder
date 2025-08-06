@@ -752,7 +752,6 @@ button { /* currently only applies to searchButton, but could be useful if more 
 
 .tooltipCard {
     width:20vw;
-    position: fixed;
     display: inline-block;
     z-index: 1;
 }
@@ -771,6 +770,10 @@ button { /* currently only applies to searchButton, but could be useful if more 
     opacity: 0;
     bottom:1vw;
     left:21.5vw;
+}
+
+.tooltipTextCard {
+    position: fixed;
 }
 
 .tooltipCard:hover .tooltipTextCard {
